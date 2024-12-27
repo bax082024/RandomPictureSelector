@@ -15,6 +15,9 @@ namespace RandomPictureSelector
         private int customShuffleSpeed = 100;// How many images to show during shuffle
         private int maxShuffleCount;
 
+        private const string SettingsFilePath = "UserSettings.json";
+
+
 
 
         public RandomForm()
@@ -400,6 +403,31 @@ namespace RandomPictureSelector
             shuffleProgressBar.Value = 0;
             shuffleProgressBar.Visible = true;
         }
+
+        private void SaveSettings()
+        {
+            try
+            {
+                var settings = new UserSettings
+                {
+                    MinShuffleCount = shuffleProgressBar.Minimum,
+                    ShuffleSpeed = customShuffleSpeed
+                };
+
+                string json = System.Text.Json.JsonSerializer.Serialize(settings, new System.Text.Json.JsonSerializerOptions
+                {
+                    WriteIndented = true // Make the JSON more readable
+                });
+
+                File.WriteAllText(SettingsFilePath, json);
+                MessageBox.Show("Settings saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Failed to save settings: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
 
 
     }
