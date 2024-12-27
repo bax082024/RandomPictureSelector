@@ -51,6 +51,8 @@
             shuffleTimer = new System.Windows.Forms.Timer(components);
             numMinShuffleCount = new NumericUpDown();
             numShuffleSpeed = new NumericUpDown();
+            lblSpeed = new Label();
+            lblShufflecount = new Label();
             MainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             statusStrip1.SuspendLayout();
@@ -62,6 +64,8 @@
             // MainPanel
             // 
             MainPanel.BackColor = Color.Transparent;
+            MainPanel.Controls.Add(lblShufflecount);
+            MainPanel.Controls.Add(lblSpeed);
             MainPanel.Controls.Add(numShuffleSpeed);
             MainPanel.Controls.Add(numMinShuffleCount);
             MainPanel.Controls.Add(lblShuffleStatus);
@@ -214,9 +218,9 @@
             pictureBox1.BackColor = Color.Black;
             pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox1.BorderStyle = BorderStyle.Fixed3D;
-            pictureBox1.Location = new Point(301, 142);
+            pictureBox1.Location = new Point(315, 167);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(400, 400);
+            pictureBox1.Size = new Size(375, 375);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 3;
             pictureBox1.TabStop = false;
@@ -284,23 +288,41 @@
             // 
             // numMinShuffleCount
             // 
-            numMinShuffleCount.Location = new Point(581, 109);
+            numMinShuffleCount.Location = new Point(640, 138);
             numMinShuffleCount.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             numMinShuffleCount.Name = "numMinShuffleCount";
-            numMinShuffleCount.Size = new Size(120, 23);
+            numMinShuffleCount.Size = new Size(50, 23);
             numMinShuffleCount.TabIndex = 15;
             numMinShuffleCount.Value = new decimal(new int[] { 20, 0, 0, 0 });
             // 
             // numShuffleSpeed
             // 
             numShuffleSpeed.Increment = new decimal(new int[] { 10, 0, 0, 0 });
-            numShuffleSpeed.Location = new Point(439, 109);
+            numShuffleSpeed.Location = new Point(584, 138);
             numShuffleSpeed.Maximum = new decimal(new int[] { 500, 0, 0, 0 });
             numShuffleSpeed.Minimum = new decimal(new int[] { 10, 0, 0, 0 });
             numShuffleSpeed.Name = "numShuffleSpeed";
-            numShuffleSpeed.Size = new Size(120, 23);
+            numShuffleSpeed.Size = new Size(50, 23);
             numShuffleSpeed.TabIndex = 16;
             numShuffleSpeed.Value = new decimal(new int[] { 100, 0, 0, 0 });
+            // 
+            // lblSpeed
+            // 
+            lblSpeed.AutoSize = true;
+            lblSpeed.Location = new Point(584, 120);
+            lblSpeed.Name = "lblSpeed";
+            lblSpeed.Size = new Size(42, 15);
+            lblSpeed.TabIndex = 17;
+            lblSpeed.Text = "Speed";
+            // 
+            // lblShufflecount
+            // 
+            lblShufflecount.AutoSize = true;
+            lblShufflecount.Location = new Point(640, 120);
+            lblShufflecount.Name = "lblShufflecount";
+            lblShufflecount.Size = new Size(40, 15);
+            lblShufflecount.TabIndex = 18;
+            lblShufflecount.Text = "Count";
             // 
             // RandomForm
             // 
@@ -350,5 +372,7 @@
         private Label lblShuffleStatus;
         private NumericUpDown numMinShuffleCount;
         private NumericUpDown numShuffleSpeed;
+        private Label lblShufflecount;
+        private Label lblSpeed;
     }
 }
