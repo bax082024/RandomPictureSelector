@@ -89,6 +89,7 @@
             btnAdd.TabIndex = 7;
             btnAdd.Text = "Add Image";
             btnAdd.UseVisualStyleBackColor = false;
+            btnAdd.Click += btnAdd_Click;
             // 
             // btnMove
             // 

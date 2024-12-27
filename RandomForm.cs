@@ -12,5 +12,26 @@ namespace RandomPictureSelector
         {
             InitializeComponent();
         }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp";
+                openFileDialog.Multiselect = true;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    foreach (string filePath in openFileDialog.FileNames)
+                    {
+                        if (!imagePaths.Contains(filePath))
+                        {
+                            imagePaths.Add(filePath);
+                            listBox1.Items.Add(System.IO.Path.GetFileName(filePath)); // Add filename to listBox1
+                        }
+                    }
+                }
+            }
+        }
     }
 }
