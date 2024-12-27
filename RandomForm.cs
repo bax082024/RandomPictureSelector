@@ -16,6 +16,7 @@ namespace RandomPictureSelector
         public RandomForm()
         {
             InitializeComponent();
+            shuffleTimer.Tick += shuffleTimer_Tick;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -262,20 +263,22 @@ namespace RandomPictureSelector
                 return;
             }
 
-            // Show the next image in the shuffle
-            pictureBox1.Image = Image.FromFile(imagePaths[shuffleIndex]);
+            // Display the next image in the shuffle, fixing its orientation
+            pictureBox1.Image = FixImageOrientation(Image.FromFile(imagePaths[shuffleIndex]));
 
-            // Move to the next image
+            // Cycle through the images
             shuffleIndex = (shuffleIndex + 1) % imagePaths.Count;
 
-            // Increment shuffle count and stop after the max count
+            // Stop after a fixed number of shuffles
             shuffleCount++;
             if (shuffleCount >= MaxShuffleCount)
             {
                 shuffleTimer.Stop();
-                SelectFinalRandomImage(); // Stop shuffling and pick the final random image
+                SelectFinalRandomImage();
             }
         }
+
+
 
         private void SelectFinalRandomImage()
         {
@@ -283,8 +286,8 @@ namespace RandomPictureSelector
             int randomIndex = random.Next(imagePaths.Count);
             string selectedImage = imagePaths[randomIndex];
 
-            // Display the selected image in the PictureBox
-            pictureBox1.Image = Image.FromFile(selectedImage);
+            // Display the selected image in the PictureBox, fixing its orientation
+            pictureBox1.Image = FixImageOrientation(Image.FromFile(selectedImage));
 
             // Move the selected image to "Used Images"
             usedImagePaths.Add(selectedImage);
@@ -293,6 +296,7 @@ namespace RandomPictureSelector
             imagePaths.RemoveAt(randomIndex);
             listBox1.Items.RemoveAt(randomIndex);
         }
+
 
 
     }
