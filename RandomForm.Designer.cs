@@ -49,6 +49,10 @@
             fileToolStripMenuItem = new ToolStripMenuItem();
             exitToolStripMenuItem = new ToolStripMenuItem();
             shuffleTimer = new System.Windows.Forms.Timer(components);
+            settingsToolStripMenuItem = new ToolStripMenuItem();
+            shuffleSettingsToolStripMenuItem = new ToolStripMenuItem();
+            saveSettiToolStripMenuItem = new ToolStripMenuItem();
+            loadSettingsToolStripMenuItem = new ToolStripMenuItem();
             MainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             statusStrip1.SuspendLayout();
@@ -91,10 +95,10 @@
             // shuffleProgressBar
             // 
             shuffleProgressBar.Anchor = AnchorStyles.None;
-            shuffleProgressBar.Location = new Point(301, 548);
+            shuffleProgressBar.Location = new Point(315, 548);
             shuffleProgressBar.Maximum = 20;
             shuffleProgressBar.Name = "shuffleProgressBar";
-            shuffleProgressBar.Size = new Size(400, 16);
+            shuffleProgressBar.Size = new Size(375, 16);
             shuffleProgressBar.TabIndex = 13;
             // 
             // btnLoad
@@ -255,7 +259,7 @@
             // menuStrip1
             // 
             menuStrip1.BackColor = Color.LightGray;
-            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, settingsToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(1009, 24);
@@ -275,6 +279,31 @@
             exitToolStripMenuItem.Size = new Size(93, 22);
             exitToolStripMenuItem.Text = "Exit";
             exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
+            // 
+            // settingsToolStripMenuItem
+            // 
+            settingsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { shuffleSettingsToolStripMenuItem, saveSettiToolStripMenuItem, loadSettingsToolStripMenuItem });
+            settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            settingsToolStripMenuItem.Size = new Size(61, 20);
+            settingsToolStripMenuItem.Text = "Settings";
+            // 
+            // shuffleSettingsToolStripMenuItem
+            // 
+            shuffleSettingsToolStripMenuItem.Name = "shuffleSettingsToolStripMenuItem";
+            shuffleSettingsToolStripMenuItem.Size = new Size(180, 22);
+            shuffleSettingsToolStripMenuItem.Text = "Shuffle Settings";
+            // 
+            // saveSettiToolStripMenuItem
+            // 
+            saveSettiToolStripMenuItem.Name = "saveSettiToolStripMenuItem";
+            saveSettiToolStripMenuItem.Size = new Size(180, 22);
+            saveSettiToolStripMenuItem.Text = "Save Settings";
+            // 
+            // loadSettingsToolStripMenuItem
+            // 
+            loadSettingsToolStripMenuItem.Name = "loadSettingsToolStripMenuItem";
+            loadSettingsToolStripMenuItem.Size = new Size(180, 22);
+            loadSettingsToolStripMenuItem.Text = "Load Settings";
             // 
             // RandomForm
             // 
@@ -320,5 +349,9 @@
         private System.Windows.Forms.Timer shuffleTimer;
         private ProgressBar shuffleProgressBar;
         private Label lblShuffleStatus;
+        private ToolStripMenuItem settingsToolStripMenuItem;
+        private ToolStripMenuItem shuffleSettingsToolStripMenuItem;
+        private ToolStripMenuItem saveSettiToolStripMenuItem;
+        private ToolStripMenuItem loadSettingsToolStripMenuItem;
     }
 }
