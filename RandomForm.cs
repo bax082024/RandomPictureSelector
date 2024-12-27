@@ -47,20 +47,12 @@ namespace RandomPictureSelector
                 return;
             }
 
-            // Select a random image
-            int randomIndex = random.Next(imagePaths.Count);
-            string selectedImage = imagePaths[randomIndex];
+            // Reset shuffle variables
+            shuffleIndex = 0;
+            shuffleCount = 0;
 
-            // Load the image and fix its orientation
-            Image imageToDisplay = FixImageOrientation(Image.FromFile(selectedImage));
-            pictureBox1.Image = imageToDisplay;
-
-            // Move the selected image to "Used Images"
-            usedImagePaths.Add(selectedImage);
-            listBox2.Items.Add(System.IO.Path.GetFileName(selectedImage));
-
-            imagePaths.RemoveAt(randomIndex);
-            listBox1.Items.RemoveAt(randomIndex);
+            // Start the shuffle timer
+            shuffleTimer.Start();
         }
 
         private void btnMove_Click(object sender, EventArgs e)
