@@ -28,7 +28,7 @@ namespace RandomPictureSelector
             LoadSettings();
 
             shuffleTimer.Tick += shuffleTimer_Tick;
-           
+
             // Apply default theme if no settings are loaded
             if (string.IsNullOrEmpty(currentTheme))
             {
@@ -477,67 +477,91 @@ namespace RandomPictureSelector
 
         private void ApplyTheme(string theme)
         {
-            this.Paint -= RandomForm_Paint; // Detach any existing Paint event to prevent conflicts
+            // Remove any previous Paint event to avoid stacking
+            this.Paint -= RandomForm_Paint;
+
+            // Initialize default colors
+            Color backgroundColor;
+            Color textColor;
+            Color buttonColor;
+            Color listBoxBackgroundColor;
 
             switch (theme)
             {
                 case "Light":
-                    this.BackColor = Color.White;
-                    foreach (Control control in this.Controls)
-                    {
-                        control.BackColor = Color.White;
-                        control.ForeColor = Color.Black;
-                    }
+                    backgroundColor = Color.White;
+                    textColor = Color.Black;
+                    buttonColor = Color.LightGray;
+                    listBoxBackgroundColor = Color.White;
                     break;
 
                 case "Dark":
-                    this.BackColor = Color.Black;
-                    foreach (Control control in this.Controls)
-                    {
-                        control.BackColor = Color.Black;
-                        control.ForeColor = Color.White;
-                    }
+                    backgroundColor = Color.Black;
+                    textColor = Color.White;
+                    buttonColor = Color.Gray;
+                    listBoxBackgroundColor = Color.Black;
                     break;
 
                 case "Gradient":
-                    this.Paint += RandomForm_Paint; // Attach the Paint event for the gradient background
-                    foreach (Control control in this.Controls)
-                    {
-                        control.BackColor = Color.Transparent; // Ensure controls are transparent for gradient
-                        control.ForeColor = Color.White;
-                        if (control is Button button)
-                        {
-                            button.BackColor = Color.DimGray;
-                            button.FlatStyle = FlatStyle.Flat; // Optional: Flat style for modern look
-                        }
-                    }
+                    // Attach the Paint event for gradient background
+                    this.Paint += RandomForm_Paint;
+
+                    // Fallback solid colors for controls
+                    backgroundColor = Color.White; // Ensure valid color for controls
+                    textColor = Color.White;
+                    buttonColor = Color.DarkGray;
+                    listBoxBackgroundColor = Color.White;
                     break;
 
                 case "DesignView":
                 default:
-                    this.BackColor = Color.LightYellow;
-                    foreach (Control control in this.Controls)
-                    {
-                        control.BackColor = Color.LightYellow;
-                        control.ForeColor = Color.Black;
-                    }
+                    // Default colors
+                    backgroundColor = Color.LightYellow;
+                    textColor = Color.Black;
+                    buttonColor = Color.LightGray;
+                    listBoxBackgroundColor = Color.LightYellow;
                     break;
             }
 
-            // Apply theme to menu strip separately
-            menuStrip1.BackColor = theme == "Dark" ? Color.Gray : Color.Beige;
-            menuStrip1.ForeColor = theme == "Dark" ? Color.White : Color.Black;
+            // Apply colors to the form itself
+            this.BackColor = backgroundColor;
+            this.ForeColor = textColor;
+
+            // Apply colors to controls
+            foreach (Control control in this.Controls)
+            {
+                if (control is Button button)
+                {
+                    button.BackColor = buttonColor;
+                    button.ForeColor = textColor;
+                }
+                else if (control is ListBox listBox)
+                {
+                    listBox.BackColor = listBoxBackgroundColor;
+                    listBox.ForeColor = textColor;
+                }
+                else if (control is MenuStrip menuStrip)
+                {
+                    menuStrip.BackColor = backgroundColor;
+                    menuStrip.ForeColor = textColor;
+                }
+            }
         }
 
+        // Paint event for the gradient background
         private void RandomForm_Paint(object sender, PaintEventArgs e)
         {
-            var gradientBrush = new System.Drawing.Drawing2D.LinearGradientBrush(
+            using (var gradientBrush = new System.Drawing.Drawing2D.LinearGradientBrush(
                 this.ClientRectangle,
                 Color.LightBlue,
                 Color.DarkBlue,
-                System.Drawing.Drawing2D.LinearGradientMode.Vertical);
-            e.Graphics.FillRectangle(gradientBrush, this.ClientRectangle);
+                System.Drawing.Drawing2D.LinearGradientMode.Vertical))
+            {
+                e.Graphics.FillRectangle(gradientBrush, this.ClientRectangle);
+            }
         }
+
+
 
 
         private void ChangeTheme(string theme)
@@ -575,6 +599,11 @@ namespace RandomPictureSelector
         private void gradientToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ChangeTheme("Gradient");
+        }
+
+        private void defaultToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangeTheme("DesignView");
         }
     }
 }
