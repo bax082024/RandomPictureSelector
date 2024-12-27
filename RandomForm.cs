@@ -6,6 +6,11 @@ namespace RandomPictureSelector
         private List<string> usedImagePaths = new List<string>(); // Paths for listBox2
         private Random random = new Random(); // For random selection
 
+        // Shuffle
+        private int shuffleIndex = 0; // Tracks the current image being shown
+        private int shuffleCount = 0; // Counts how many times images have been shuffled
+        private const int MaxShuffleCount = 20; // How many images to show during shuffle
+
 
 
         public RandomForm()

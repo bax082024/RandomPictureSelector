@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             MainPanel = new Panel();
             btnLoad = new Button();
             btnSave = new Button();
@@ -45,6 +46,7 @@
             menuStrip1 = new MenuStrip();
             fileToolStripMenuItem = new ToolStripMenuItem();
             exitToolStripMenuItem = new ToolStripMenuItem();
+            shuffleTimer = new System.Windows.Forms.Timer(components);
             MainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             statusStrip1.SuspendLayout();
@@ -293,5 +295,6 @@
         private Button btnExit;
         private Button btnSave;
         private Button btnLoad;
+        private System.Windows.Forms.Timer shuffleTimer;
     }
 }
