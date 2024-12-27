@@ -33,5 +33,14 @@ namespace RandomPictureSelector
                 }
             }
         }
+
+        private void btnRandom_Click(object sender, EventArgs e)
+        {
+            if (imagePaths.Count == 0)
+            {
+                MessageBox.Show("Please add images first!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+        }
     }
 }

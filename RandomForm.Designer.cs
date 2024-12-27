@@ -117,6 +117,7 @@
             btnRandom.TabIndex = 5;
             btnRandom.Text = "START";
             btnRandom.UseVisualStyleBackColor = false;
+            btnRandom.Click += btnRandom_Click;
             // 
             // label1
             // 
