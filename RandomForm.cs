@@ -261,5 +261,29 @@ namespace RandomPictureSelector
                 }
             }
         }
+
+        private void shuffleTimer_Tick(object sender, EventArgs e)
+        {
+            if (imagePaths.Count == 0)
+            {
+                shuffleTimer.Stop();
+                return;
+            }
+
+            // Show the next image in the shuffle
+            pictureBox1.Image = Image.FromFile(imagePaths[shuffleIndex]);
+
+            // Move to the next image
+            shuffleIndex = (shuffleIndex + 1) % imagePaths.Count;
+
+            // Increment shuffle count and stop after the max count
+            shuffleCount++;
+            if (shuffleCount >= MaxShuffleCount)
+            {
+                shuffleTimer.Stop();
+                SelectFinalRandomImage(); // Stop shuffling and pick the final random image
+            }
+        }
+
     }
 }
