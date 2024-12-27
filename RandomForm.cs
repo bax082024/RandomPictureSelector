@@ -17,6 +17,7 @@ namespace RandomPictureSelector
 
         private const string SettingsFilePath = "UserSettings.json";
 
+        private GradientType currentGradient = GradientType.LightBlueToDarkBlue;
         private string currentTheme = "Light";
 
 
@@ -477,92 +478,162 @@ namespace RandomPictureSelector
 
         private void ApplyTheme(string theme)
         {
-            // Remove any previous Paint event to avoid stacking
+            // Detach any previously attached Paint event for gradients
             this.Paint -= RandomForm_Paint;
 
-            // Initialize default colors
+            // Initialize colors dynamically based on the theme
             Color backgroundColor;
             Color textColor;
-            Color buttonColor;
+            Color buttonBackgroundColor;
+            Color buttonTextColor;
             Color listBoxBackgroundColor;
+            Color listBoxTextColor;
+            Color menuStripBackgroundColor;
+            Color menuStripTextColor;
 
             switch (theme)
             {
                 case "Light":
                     backgroundColor = Color.White;
                     textColor = Color.Black;
-                    buttonColor = Color.LightGray;
+                    buttonBackgroundColor = Color.LightGray;
+                    buttonTextColor = Color.Black;
                     listBoxBackgroundColor = Color.White;
+                    listBoxTextColor = Color.Black;
+                    menuStripBackgroundColor = Color.White;
+                    menuStripTextColor = Color.Black;
                     break;
 
                 case "Dark":
                     backgroundColor = Color.Black;
                     textColor = Color.White;
-                    buttonColor = Color.Gray;
+                    buttonBackgroundColor = Color.Gray;
+                    buttonTextColor = Color.White;
                     listBoxBackgroundColor = Color.Black;
+                    listBoxTextColor = Color.White;
+                    menuStripBackgroundColor = Color.Black;
+                    menuStripTextColor = Color.White;
                     break;
 
                 case "Gradient":
-                    // Attach the Paint event for gradient background
+                    // Attach Paint event for gradient background
                     this.Paint += RandomForm_Paint;
 
-                    // Fallback solid colors for controls
-                    backgroundColor = Color.White; // Ensure valid color for controls
+                    backgroundColor = Color.Transparent; // Gradient is drawn in Paint event
                     textColor = Color.White;
-                    buttonColor = Color.DarkGray;
-                    listBoxBackgroundColor = Color.White;
+                    buttonBackgroundColor = Color.DarkGray;
+                    buttonTextColor = Color.White;
+                    listBoxBackgroundColor = Color.Gray;
+                    listBoxTextColor = Color.White;
+                    menuStripBackgroundColor = Color.DarkGray;
+                    menuStripTextColor = Color.White;
                     break;
 
                 case "DesignView":
                 default:
-                    // Default colors
                     backgroundColor = Color.LightYellow;
                     textColor = Color.Black;
-                    buttonColor = Color.LightGray;
+                    buttonBackgroundColor = Color.LightGoldenrodYellow;
+                    buttonTextColor = Color.Black;
                     listBoxBackgroundColor = Color.LightYellow;
+                    listBoxTextColor = Color.Black;
+                    menuStripBackgroundColor = Color.Beige;
+                    menuStripTextColor = Color.Black;
                     break;
             }
 
-            // Apply colors to the form itself
-            this.BackColor = backgroundColor;
+            // Apply colors to the form
+            this.BackColor = theme == "Gradient" ? Color.White : backgroundColor;
             this.ForeColor = textColor;
 
-            // Apply colors to controls
+            // Iterate through all controls and apply colors dynamically
             foreach (Control control in this.Controls)
             {
-                if (control is Button button)
+                switch (control)
                 {
-                    button.BackColor = buttonColor;
-                    button.ForeColor = textColor;
-                }
-                else if (control is ListBox listBox)
-                {
-                    listBox.BackColor = listBoxBackgroundColor;
-                    listBox.ForeColor = textColor;
-                }
-                else if (control is MenuStrip menuStrip)
-                {
-                    menuStrip.BackColor = backgroundColor;
-                    menuStrip.ForeColor = textColor;
+                    case Button button:
+                        button.BackColor = buttonBackgroundColor;
+                        button.ForeColor = buttonTextColor;
+                        break;
+
+                    case ListBox listBox:
+                        listBox.BackColor = listBoxBackgroundColor;
+                        listBox.ForeColor = listBoxTextColor;
+                        break;
+
+                    case MenuStrip menuStrip:
+                        menuStrip.BackColor = menuStripBackgroundColor;
+                        menuStrip.ForeColor = menuStripTextColor;
+                        break;
+
+                    case Label label:
+                        label.ForeColor = textColor; // Apply text color to labels
+                        break;
+
+                    case ProgressBar progressBar:
+                        progressBar.BackColor = backgroundColor; // Match form background
+                        progressBar.ForeColor = textColor;       // Optional
+                        break;
+
+                    default:
+                        // Apply default colors for other controls
+                        control.BackColor = backgroundColor;
+                        control.ForeColor = textColor;
+                        break;
                 }
             }
+
+            // Save the applied theme to settings
+            SaveSettings();
         }
+
+
 
         // Paint event for the gradient background
         private void RandomForm_Paint(object sender, PaintEventArgs e)
         {
-            using (var gradientBrush = new System.Drawing.Drawing2D.LinearGradientBrush(
-                this.ClientRectangle,
-                Color.LightBlue,
-                Color.DarkBlue,
-                System.Drawing.Drawing2D.LinearGradientMode.Vertical))
+            System.Drawing.Drawing2D.LinearGradientBrush gradientBrush;
+
+            switch (currentGradient)
             {
-                e.Graphics.FillRectangle(gradientBrush, this.ClientRectangle);
+                case GradientType.OrangeToYellow:
+                    gradientBrush = new System.Drawing.Drawing2D.LinearGradientBrush(
+                        this.ClientRectangle,
+                        Color.Orange,
+                        Color.Yellow,
+                        System.Drawing.Drawing2D.LinearGradientMode.Vertical);
+                    break;
+
+                case GradientType.BlueToPurple:
+                    gradientBrush = new System.Drawing.Drawing2D.LinearGradientBrush(
+                        this.ClientRectangle,
+                        Color.Blue,
+                        Color.Purple,
+                        System.Drawing.Drawing2D.LinearGradientMode.Vertical);
+                    break;
+
+                case GradientType.LightBlueToDarkBlue:
+                default:
+                    gradientBrush = new System.Drawing.Drawing2D.LinearGradientBrush(
+                        this.ClientRectangle,
+                        Color.LightBlue,
+                        Color.DarkBlue,
+                        System.Drawing.Drawing2D.LinearGradientMode.Vertical);
+                    break;
             }
+
+            e.Graphics.FillRectangle(gradientBrush, this.ClientRectangle);
+            gradientBrush.Dispose();
         }
 
 
 
+        public enum GradientType
+        {
+            LightBlueToDarkBlue,
+            OrangeToYellow,
+            BlueToPurple
+        }
 
         private void ChangeTheme(string theme)
         {
@@ -604,6 +675,24 @@ namespace RandomPictureSelector
         private void defaultToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ChangeTheme("DesignView");
+        }
+
+        private void blueToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            currentGradient = GradientType.LightBlueToDarkBlue;
+            ApplyTheme("Gradient");
+        }
+
+        private void orangeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            currentGradient = GradientType.OrangeToYellow;
+            ApplyTheme("Gradient");
+        }
+
+        private void purpleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            currentGradient = GradientType.BlueToPurple;
+            ApplyTheme("Gradient");
         }
     }
 }

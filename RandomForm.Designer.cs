@@ -56,8 +56,11 @@
             lightToolStripMenuItem = new ToolStripMenuItem();
             darkToolStripMenuItem = new ToolStripMenuItem();
             gradientToolStripMenuItem = new ToolStripMenuItem();
-            shuffleTimer = new System.Windows.Forms.Timer(components);
             defaultToolStripMenuItem = new ToolStripMenuItem();
+            shuffleTimer = new System.Windows.Forms.Timer(components);
+            blueToolStripMenuItem = new ToolStripMenuItem();
+            orangeToolStripMenuItem = new ToolStripMenuItem();
+            purpleToolStripMenuItem = new ToolStripMenuItem();
             MainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             statusStrip1.SuspendLayout();
@@ -339,6 +342,7 @@
             // 
             // gradientToolStripMenuItem
             // 
+            gradientToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { blueToolStripMenuItem, orangeToolStripMenuItem, purpleToolStripMenuItem });
             gradientToolStripMenuItem.Name = "gradientToolStripMenuItem";
             gradientToolStripMenuItem.Size = new Size(180, 22);
             gradientToolStripMenuItem.Text = "Gradient";
@@ -350,6 +354,27 @@
             defaultToolStripMenuItem.Size = new Size(180, 22);
             defaultToolStripMenuItem.Text = "Default";
             defaultToolStripMenuItem.Click += defaultToolStripMenuItem_Click;
+            // 
+            // blueToolStripMenuItem
+            // 
+            blueToolStripMenuItem.Name = "blueToolStripMenuItem";
+            blueToolStripMenuItem.Size = new Size(180, 22);
+            blueToolStripMenuItem.Text = "Blue";
+            blueToolStripMenuItem.Click += blueToolStripMenuItem_Click;
+            // 
+            // orangeToolStripMenuItem
+            // 
+            orangeToolStripMenuItem.Name = "orangeToolStripMenuItem";
+            orangeToolStripMenuItem.Size = new Size(180, 22);
+            orangeToolStripMenuItem.Text = "Orange";
+            orangeToolStripMenuItem.Click += orangeToolStripMenuItem_Click;
+            // 
+            // purpleToolStripMenuItem
+            // 
+            purpleToolStripMenuItem.Name = "purpleToolStripMenuItem";
+            purpleToolStripMenuItem.Size = new Size(180, 22);
+            purpleToolStripMenuItem.Text = "Purple";
+            purpleToolStripMenuItem.Click += purpleToolStripMenuItem_Click;
             // 
             // RandomForm
             // 
@@ -404,5 +429,8 @@
         private ToolStripMenuItem darkToolStripMenuItem;
         private ToolStripMenuItem gradientToolStripMenuItem;
         private ToolStripMenuItem defaultToolStripMenuItem;
+        private ToolStripMenuItem blueToolStripMenuItem;
+        private ToolStripMenuItem orangeToolStripMenuItem;
+        private ToolStripMenuItem purpleToolStripMenuItem;
     }
 }
