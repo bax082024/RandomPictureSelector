@@ -17,6 +17,8 @@ namespace RandomPictureSelector
 
         private const string SettingsFilePath = "UserSettings.json";
 
+        private string currentTheme = "Light";
+
 
 
 
@@ -414,7 +416,8 @@ namespace RandomPictureSelector
                 var settings = new UserSettings
                 {
                     MinShuffleCount = shuffleProgressBar.Minimum,
-                    ShuffleSpeed = customShuffleSpeed
+                    ShuffleSpeed = customShuffleSpeed,
+                    SelectedTheme = currentTheme
                 };
 
                 string json = System.Text.Json.JsonSerializer.Serialize(settings, new System.Text.Json.JsonSerializerOptions
@@ -431,6 +434,7 @@ namespace RandomPictureSelector
             }
         }
 
+
         private void LoadSettings()
         {
             try
@@ -444,7 +448,8 @@ namespace RandomPictureSelector
                     {
                         shuffleProgressBar.Minimum = settings.MinShuffleCount;
                         customShuffleSpeed = settings.ShuffleSpeed;
-
+                        currentTheme = settings.SelectedTheme;
+                        ApplyTheme(currentTheme);
                         MessageBox.Show("Settings loaded successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
@@ -458,6 +463,7 @@ namespace RandomPictureSelector
                 MessageBox.Show($"Failed to load settings: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void ApplyTheme(string theme)
         {
