@@ -37,6 +37,9 @@
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
+            label6 = new Label();
+            btnSave = new Button();
+            button2 = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numMinShuffleCount).BeginInit();
@@ -57,6 +60,9 @@
             // 
             panel2.Anchor = AnchorStyles.None;
             panel2.BackColor = Color.Gray;
+            panel2.Controls.Add(button2);
+            panel2.Controls.Add(btnSave);
+            panel2.Controls.Add(label6);
             panel2.Controls.Add(label5);
             panel2.Controls.Add(label4);
             panel2.Controls.Add(label3);
@@ -106,42 +112,72 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(219, 103);
+            label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(210, 101);
             label2.Name = "label2";
-            label2.Size = new Size(106, 17);
+            label2.Size = new Size(131, 21);
             label2.TabIndex = 3;
             label2.Text = "Shuffle Settings";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(160, 318);
+            label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Location = new Point(178, 254);
             label3.Name = "label3";
-            label3.Size = new Size(58, 17);
+            label3.Size = new Size(200, 21);
             label3.TabIndex = 4;
-            label3.Text = "Settings";
+            label3.Text = "Save And Load Functions";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             label4.Location = new Point(151, 154);
             label4.Name = "label4";
-            label4.Size = new Size(101, 17);
+            label4.Size = new Size(90, 15);
             label4.TabIndex = 5;
             label4.Text = "Shuffle Count :";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             label5.Location = new Point(143, 203);
             label5.Name = "label5";
-            label5.Size = new Size(109, 17);
+            label5.Size = new Size(99, 15);
             label5.TabIndex = 6;
             label5.Text = "Shouffle Speed :";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.Location = new Point(85, 458);
+            label6.Name = "label6";
+            label6.Size = new Size(58, 17);
+            label6.TabIndex = 7;
+            label6.Text = "Settings";
+            // 
+            // btnSave
+            // 
+            btnSave.Anchor = AnchorStyles.None;
+            btnSave.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSave.Location = new Point(210, 290);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(125, 33);
+            btnSave.TabIndex = 8;
+            btnSave.Text = "Save";
+            btnSave.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(210, 338);
+            button2.Name = "button2";
+            button2.Size = new Size(125, 33);
+            button2.TabIndex = 9;
+            button2.Text = "button2";
+            button2.UseVisualStyleBackColor = true;
             // 
             // SettingsForm
             // 
@@ -173,5 +209,8 @@
         private Label label5;
         private Label label4;
         private Label label3;
+        private Label label6;
+        private Button button2;
+        private Button btnSave;
     }
 }
