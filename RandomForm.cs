@@ -433,13 +433,14 @@ namespace RandomPictureSelector
                 });
 
                 File.WriteAllText(SettingsFilePath, json);
-                MessageBox.Show("Settings saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Debug.WriteLine("Settings saved successfully.");
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Failed to save settings: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Debug.WriteLine($"Failed to save settings: {ex.Message}");
             }
         }
+
 
 
         private void LoadSettings()
