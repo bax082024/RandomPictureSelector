@@ -171,6 +171,7 @@
             // 
             // listBox1
             // 
+            listBox1.AllowDrop = true;
             listBox1.Anchor = AnchorStyles.None;
             listBox1.FormattingEnabled = true;
             listBox1.ItemHeight = 15;
