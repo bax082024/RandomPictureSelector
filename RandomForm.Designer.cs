@@ -30,6 +30,7 @@
         {
             components = new System.ComponentModel.Container();
             MainPanel = new Panel();
+            shuffleProgressBar = new ProgressBar();
             btnLoad = new Button();
             btnSave = new Button();
             btnExit = new Button();
@@ -56,6 +57,7 @@
             // MainPanel
             // 
             MainPanel.BackColor = Color.Transparent;
+            MainPanel.Controls.Add(shuffleProgressBar);
             MainPanel.Controls.Add(btnLoad);
             MainPanel.Controls.Add(btnSave);
             MainPanel.Controls.Add(btnExit);
@@ -74,6 +76,15 @@
             MainPanel.Name = "MainPanel";
             MainPanel.Size = new Size(1009, 669);
             MainPanel.TabIndex = 0;
+            // 
+            // shuffleProgressBar
+            // 
+            shuffleProgressBar.Anchor = AnchorStyles.None;
+            shuffleProgressBar.Location = new Point(301, 548);
+            shuffleProgressBar.Maximum = 20;
+            shuffleProgressBar.Name = "shuffleProgressBar";
+            shuffleProgressBar.Size = new Size(400, 16);
+            shuffleProgressBar.TabIndex = 13;
             // 
             // btnLoad
             // 
@@ -162,7 +173,7 @@
             btnRandom.BackColor = Color.LightGray;
             btnRandom.FlatStyle = FlatStyle.Popup;
             btnRandom.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnRandom.Location = new Point(416, 565);
+            btnRandom.Location = new Point(414, 574);
             btnRandom.Name = "btnRandom";
             btnRandom.Size = new Size(163, 50);
             btnRandom.TabIndex = 5;
@@ -296,5 +307,6 @@
         private Button btnSave;
         private Button btnLoad;
         private System.Windows.Forms.Timer shuffleTimer;
+        private ProgressBar shuffleProgressBar;
     }
 }
