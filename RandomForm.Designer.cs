@@ -50,16 +50,19 @@
             exitToolStripMenuItem = new ToolStripMenuItem();
             shuffleTimer = new System.Windows.Forms.Timer(components);
             numMinShuffleCount = new NumericUpDown();
+            numShuffleSpeed = new NumericUpDown();
             MainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             statusStrip1.SuspendLayout();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numMinShuffleCount).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numShuffleSpeed).BeginInit();
             SuspendLayout();
             // 
             // MainPanel
             // 
             MainPanel.BackColor = Color.Transparent;
+            MainPanel.Controls.Add(numShuffleSpeed);
             MainPanel.Controls.Add(numMinShuffleCount);
             MainPanel.Controls.Add(lblShuffleStatus);
             MainPanel.Controls.Add(shuffleProgressBar);
@@ -288,6 +291,17 @@
             numMinShuffleCount.TabIndex = 15;
             numMinShuffleCount.Value = new decimal(new int[] { 20, 0, 0, 0 });
             // 
+            // numShuffleSpeed
+            // 
+            numShuffleSpeed.Increment = new decimal(new int[] { 10, 0, 0, 0 });
+            numShuffleSpeed.Location = new Point(439, 109);
+            numShuffleSpeed.Maximum = new decimal(new int[] { 500, 0, 0, 0 });
+            numShuffleSpeed.Minimum = new decimal(new int[] { 10, 0, 0, 0 });
+            numShuffleSpeed.Name = "numShuffleSpeed";
+            numShuffleSpeed.Size = new Size(120, 23);
+            numShuffleSpeed.TabIndex = 16;
+            numShuffleSpeed.Value = new decimal(new int[] { 100, 0, 0, 0 });
+            // 
             // RandomForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -308,6 +322,7 @@
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numMinShuffleCount).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numShuffleSpeed).EndInit();
             ResumeLayout(false);
         }
 
@@ -334,5 +349,6 @@
         private ProgressBar shuffleProgressBar;
         private Label lblShuffleStatus;
         private NumericUpDown numMinShuffleCount;
+        private NumericUpDown numShuffleSpeed;
     }
 }
