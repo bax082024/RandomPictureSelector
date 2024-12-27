@@ -25,12 +25,18 @@ namespace RandomPictureSelector
         public RandomForm()
         {
             InitializeComponent();
+            LoadSettings();
+
             shuffleTimer.Tick += shuffleTimer_Tick;
+           
+            // Apply default theme if no settings are loaded
+            if (string.IsNullOrEmpty(currentTheme))
+            {
+                currentTheme = "DesignView";
+                ApplyTheme(currentTheme);
+            }
 
             SaveSettings();
-            currentTheme = "DesignView";
-            ApplyTheme(currentTheme);
-
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -451,19 +457,21 @@ namespace RandomPictureSelector
                         customShuffleSpeed = settings.ShuffleSpeed;
                         currentTheme = settings.SelectedTheme;
                         ApplyTheme(currentTheme);
-                        MessageBox.Show("Settings loaded successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        // Optional: Add a log message instead of showing a popup
+                        Debug.WriteLine("Settings loaded successfully.");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("No settings file found. Default settings will be used.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Debug.WriteLine("No settings file found. Default settings will be used.");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Failed to load settings: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Debug.WriteLine($"Failed to load settings: {ex.Message}");
             }
         }
+
 
 
         private void ApplyTheme(string theme)

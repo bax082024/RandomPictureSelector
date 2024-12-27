@@ -214,7 +214,7 @@
             // pictureBox1
             // 
             pictureBox1.Anchor = AnchorStyles.None;
-            pictureBox1.BackColor = Color.Black;
+            pictureBox1.BackColor = SystemColors.Info;
             pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox1.BorderStyle = BorderStyle.Fixed3D;
             pictureBox1.Location = new Point(315, 167);
@@ -323,21 +323,21 @@
             // lightToolStripMenuItem
             // 
             lightToolStripMenuItem.Name = "lightToolStripMenuItem";
-            lightToolStripMenuItem.Size = new Size(180, 22);
+            lightToolStripMenuItem.Size = new Size(119, 22);
             lightToolStripMenuItem.Text = "Light";
             lightToolStripMenuItem.Click += lightToolStripMenuItem_Click;
             // 
             // darkToolStripMenuItem
             // 
             darkToolStripMenuItem.Name = "darkToolStripMenuItem";
-            darkToolStripMenuItem.Size = new Size(180, 22);
+            darkToolStripMenuItem.Size = new Size(119, 22);
             darkToolStripMenuItem.Text = "Dark";
             darkToolStripMenuItem.Click += darkToolStripMenuItem_Click;
             // 
             // gradientToolStripMenuItem
             // 
             gradientToolStripMenuItem.Name = "gradientToolStripMenuItem";
-            gradientToolStripMenuItem.Size = new Size(180, 22);
+            gradientToolStripMenuItem.Size = new Size(119, 22);
             gradientToolStripMenuItem.Text = "Gradient";
             gradientToolStripMenuItem.Click += gradientToolStripMenuItem_Click;
             // 
