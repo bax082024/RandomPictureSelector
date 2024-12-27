@@ -104,6 +104,7 @@
             btnMove.Text = "<<<      Move ";
             btnMove.TextAlign = ContentAlignment.MiddleLeft;
             btnMove.UseVisualStyleBackColor = false;
+            btnMove.Click += btnMove_Click;
             // 
             // btnRandom
             // 

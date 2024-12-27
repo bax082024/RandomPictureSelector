@@ -53,5 +53,14 @@ namespace RandomPictureSelector
             imagePaths.RemoveAt(randomIndex);
             listBox1.Items.RemoveAt(randomIndex);
         }
+
+        private void btnMove_Click(object sender, EventArgs e)
+        {
+            if (usedImagePaths.Count == 0)
+            {
+                MessageBox.Show("No images to move back!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+        }
     }
 }
