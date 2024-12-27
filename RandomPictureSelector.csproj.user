@@ -4,5 +4,8 @@
     <Compile Update="RandomForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="UI\SettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

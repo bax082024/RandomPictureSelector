@@ -1,3 +1,6 @@
+using RandomPictureSelector.UI;
+using System.Diagnostics;
+
 namespace RandomPictureSelector
 {
     public partial class RandomForm : Form
@@ -10,6 +13,7 @@ namespace RandomPictureSelector
         private int shuffleIndex = 0; // Tracks the current image being shown
         private int shuffleCount = 0; // Counts how many times images have been shuffled
         private int customShuffleSpeed = 100;// How many images to show during shuffle
+        private int maxShuffleCount;
 
 
 
@@ -17,6 +21,7 @@ namespace RandomPictureSelector
         {
             InitializeComponent();
             shuffleTimer.Tick += shuffleTimer_Tick;
+
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -52,18 +57,15 @@ namespace RandomPictureSelector
             shuffleIndex = 0;
             shuffleCount = 0;
 
-            
-
             // Dynamically set MaxShuffleCount
-            int calculatedShuffleCount = Math.Max(20, imagePaths.Count); // Minimum 20 or the number of images
-            shuffleProgressBar.Maximum = calculatedShuffleCount;
+            maxShuffleCount = Math.Max(20, Math.Min(imagePaths.Count, shuffleProgressBar.Maximum)); // Minimum 20 or the number of images
+            shuffleProgressBar.Maximum = maxShuffleCount;
 
-            // Set up and show progress bar
-            shuffleProgressBar.Value = 0; // Reset progress
-            shuffleProgressBar.Visible = true;
+            // Reset progress bar
+            ResetProgressBar(maxShuffleCount);
 
             // Update the shuffle label
-            lblShuffleStatus.Text = $"Shuffling... 0/{calculatedShuffleCount}";
+            lblShuffleStatus.Text = $"Shuffling... 0/{maxShuffleCount}";
 
             // Show the first image immediately
             if (imagePaths.Count > 0)
@@ -72,12 +74,14 @@ namespace RandomPictureSelector
                 shuffleProgressBar.Value = 1; // Start progress bar at 1
             }
 
-            
-
             // Start the shuffle timer
             shuffleTimer.Interval = customShuffleSpeed;
             shuffleTimer.Start();
         }
+
+
+
+
 
         private void btnMove_Click(object sender, EventArgs e)
         {
@@ -289,6 +293,7 @@ namespace RandomPictureSelector
             {
                 shuffleTimer.Stop();
                 shuffleProgressBar.Visible = false;
+                lblShuffleStatus.Text = "No images to shuffle!";
                 return;
             }
 
@@ -298,24 +303,18 @@ namespace RandomPictureSelector
             // Cycle through the images
             shuffleIndex = (shuffleIndex + 1) % imagePaths.Count;
 
-            lblShuffleStatus.Text = $"Shuffling... {shuffleCount}/{shuffleProgressBar.Maximum}";
-            ;
-
-            // Increment progress bar faster to sync better
+            // Increment shuffle counter and update progress bar
             shuffleCount++;
-            shuffleProgressBar.Value = Math.Min(shuffleProgressBar.Value + 2, shuffleProgressBar.Maximum);
-
-
+            shuffleProgressBar.Value = Math.Min(shuffleCount, maxShuffleCount);
+            lblShuffleStatus.Text = $"Shuffling... {shuffleCount}/{maxShuffleCount}";
 
             // Stop after reaching the maximum shuffle count
-            if (shuffleCount >= shuffleProgressBar.Maximum)
-
+            if (shuffleCount >= maxShuffleCount)
             {
                 shuffleTimer.Stop();
-                shuffleProgressBar.Value = shuffleProgressBar.Maximum; // Ensure it ends at 100%
+                shuffleProgressBar.Value = shuffleProgressBar.Maximum;
                 shuffleProgressBar.Visible = false;
                 lblShuffleStatus.Text = "Shuffle complete!";
-
                 SelectFinalRandomImage();
             }
         }
@@ -324,8 +323,18 @@ namespace RandomPictureSelector
 
 
 
+
+
+
+
         private void SelectFinalRandomImage()
         {
+            if (imagePaths.Count == 0)
+            {
+                lblShuffleStatus.Text = "No images to display!";
+                return;
+            }
+
             // Select a random image
             int randomIndex = random.Next(imagePaths.Count);
             string selectedImage = imagePaths[randomIndex];
@@ -339,7 +348,10 @@ namespace RandomPictureSelector
 
             imagePaths.RemoveAt(randomIndex);
             listBox1.Items.RemoveAt(randomIndex);
+
+            lblShuffleStatus.Text = "Final image selected!";
         }
+
 
         private Image LoadImageSafely(string filePath)
         {
@@ -354,7 +366,40 @@ namespace RandomPictureSelector
             }
         }
 
+        private void shuffleSettingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (SettingsForm settingsForm = new SettingsForm())
+            {
+                // Pass current values to the SettingsForm
+                settingsForm.MinShuffleCount = shuffleProgressBar.Minimum;
+                settingsForm.ShuffleSpeed = customShuffleSpeed;
 
+                // Show the SettingsForm
+                if (settingsForm.ShowDialog() == DialogResult.OK)
+                {
+                    // Retrieve updated settings with validation
+                    if (settingsForm.MinShuffleCount >= 1 && settingsForm.ShuffleSpeed > 0)
+                    {
+                        shuffleProgressBar.Minimum = settingsForm.MinShuffleCount;
+                        customShuffleSpeed = settingsForm.ShuffleSpeed;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid settings. Please ensure values are correct.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
+
+
+        private void ResetProgressBar(int calculatedShuffleCount)
+        {
+            shuffleProgressBar.Minimum = 0;
+            shuffleProgressBar.Maximum = calculatedShuffleCount;
+            shuffleProgressBar.Value = 0;
+            shuffleProgressBar.Visible = true;
+        }
 
 
     }
