@@ -41,6 +41,9 @@ namespace RandomPictureSelector
                 MessageBox.Show("Please add images first!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
+            int randomIndex = random.Next(imagePaths.Count);
+            string selectedImage = imagePaths[randomIndex];
         }
     }
 }
