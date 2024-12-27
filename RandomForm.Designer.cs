@@ -30,6 +30,7 @@
         {
             components = new System.ComponentModel.Container();
             MainPanel = new Panel();
+            shuffleProgressBar = new ProgressBar();
             btnLoad = new Button();
             btnSave = new Button();
             btnExit = new Button();
@@ -47,7 +48,6 @@
             fileToolStripMenuItem = new ToolStripMenuItem();
             exitToolStripMenuItem = new ToolStripMenuItem();
             shuffleTimer = new System.Windows.Forms.Timer(components);
-            shuffleProgressBar = new ProgressBar();
             MainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             statusStrip1.SuspendLayout();
@@ -76,6 +76,15 @@
             MainPanel.Name = "MainPanel";
             MainPanel.Size = new Size(1009, 669);
             MainPanel.TabIndex = 0;
+            // 
+            // shuffleProgressBar
+            // 
+            shuffleProgressBar.Anchor = AnchorStyles.None;
+            shuffleProgressBar.Location = new Point(301, 548);
+            shuffleProgressBar.Maximum = 20;
+            shuffleProgressBar.Name = "shuffleProgressBar";
+            shuffleProgressBar.Size = new Size(400, 16);
+            shuffleProgressBar.TabIndex = 13;
             // 
             // btnLoad
             // 
@@ -255,15 +264,6 @@
             exitToolStripMenuItem.Size = new Size(93, 22);
             exitToolStripMenuItem.Text = "Exit";
             exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
-            // 
-            // shuffleProgressBar
-            // 
-            shuffleProgressBar.Anchor = AnchorStyles.None;
-            shuffleProgressBar.Location = new Point(301, 548);
-            shuffleProgressBar.Maximum = 20;
-            shuffleProgressBar.Name = "shuffleProgressBar";
-            shuffleProgressBar.Size = new Size(400, 16);
-            shuffleProgressBar.TabIndex = 13;
             // 
             // RandomForm
             // 

@@ -9,7 +9,8 @@ namespace RandomPictureSelector
         // Shuffle
         private int shuffleIndex = 0; // Tracks the current image being shown
         private int shuffleCount = 0; // Counts how many times images have been shuffled
-        private const int MaxShuffleCount = 20; // How many images to show during shuffle
+        private const int MaxShuffleCount = 20;
+        private int customShuffleSpeed = 100;// How many images to show during shuffle
 
 
 
@@ -58,6 +59,7 @@ namespace RandomPictureSelector
             shuffleProgressBar.Visible = true;
 
             // Start the shuffle timer
+            shuffleTimer.Interval = customShuffleSpeed;
             shuffleTimer.Start();
         }
 
@@ -98,24 +100,28 @@ namespace RandomPictureSelector
                 if (img.PropertyIdList.Contains(ExifOrientationId))
                 {
                     var prop = img.GetPropertyItem(ExifOrientationId);
-                    int orientation = BitConverter.ToUInt16(prop.Value, 0);
 
-                    // Apply necessary rotation based on orientation value
-                    switch (orientation)
+                    if (prop?.Value != null)
                     {
-                        case 3: // 180 degrees
-                            img.RotateFlip(RotateFlipType.Rotate180FlipNone);
-                            break;
-                        case 6: // 90 degrees clockwise
-                            img.RotateFlip(RotateFlipType.Rotate90FlipNone);
-                            break;
-                        case 8: // 90 degrees counterclockwise
-                            img.RotateFlip(RotateFlipType.Rotate270FlipNone);
-                            break;
-                    }
+                        int orientation = BitConverter.ToUInt16(prop.Value, 0);
 
-                    // Remove the EXIF orientation tag to prevent reapplying rotation
-                    img.RemovePropertyItem(ExifOrientationId);
+                        // Apply necessary rotation based on orientation value
+                        switch (orientation)
+                        {
+                            case 3: // 180 degrees
+                                img.RotateFlip(RotateFlipType.Rotate180FlipNone);
+                                break;
+                            case 6: // 90 degrees clockwise
+                                img.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                                break;
+                            case 8: // 90 degrees counterclockwise
+                                img.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                                break;
+                        }
+
+                        // Remove the EXIF orientation tag to prevent reapplying rotation
+                        img.RemovePropertyItem(ExifOrientationId);
+                    }
                 }
             }
             catch
@@ -125,6 +131,7 @@ namespace RandomPictureSelector
 
             return img;
         }
+
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -275,14 +282,18 @@ namespace RandomPictureSelector
             // Cycle through the images
             shuffleIndex = (shuffleIndex + 1) % imagePaths.Count;
 
+            
+
             // Update progress bar
             shuffleProgressBar.Value = Math.Min(shuffleCount + 1, shuffleProgressBar.Maximum);
 
             // Stop after a fixed number of shuffles
             shuffleCount++;
+
             if (shuffleCount >= MaxShuffleCount)
             {
                 shuffleTimer.Stop();
+                shuffleProgressBar.Value = shuffleProgressBar.Maximum;
                 shuffleProgressBar.Visible = false;
                 SelectFinalRandomImage();
             }
