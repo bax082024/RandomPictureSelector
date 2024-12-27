@@ -59,8 +59,14 @@ namespace RandomPictureSelector
             shuffleProgressBar.Maximum = MaxShuffleCount; // Ensure it matches shuffle count
             shuffleProgressBar.Visible = true;
 
-            // Start progress bar update immediately
-            shuffleProgressBar.Value = 1; // Initialize at 1 for better visual sync
+            // Show the first image immediately
+            if (imagePaths.Count > 0)
+            {
+                pictureBox1.Image = FixImageOrientation(LoadImageSafely(imagePaths[shuffleIndex]));
+                shuffleProgressBar.Value = 1; // Start progress bar at 1
+            }
+
+            
 
             // Start the shuffle timer
             shuffleTimer.Interval = customShuffleSpeed;
@@ -280,29 +286,29 @@ namespace RandomPictureSelector
                 return;
             }
 
-            // Display the next image in the shuffle, fixing its orientation
+            // Display the next image in the shuffle
             pictureBox1.Image = FixImageOrientation(LoadImageSafely(imagePaths[shuffleIndex]));
-
 
             // Cycle through the images
             shuffleIndex = (shuffleIndex + 1) % imagePaths.Count;
 
-            
+            // Increment progress bar faster to sync better
+            shuffleProgressBar.Value = Math.Min(shuffleProgressBar.Value + 2, shuffleProgressBar.Maximum);
 
-            // Update progress bar
-            shuffleProgressBar.Value = Math.Min(shuffleCount + 1, shuffleProgressBar.Maximum);
-
-            // Stop after a fixed number of shuffles
+            // Increment shuffle count
             shuffleCount++;
 
+            // Stop after reaching the maximum shuffle count
             if (shuffleCount >= MaxShuffleCount)
             {
                 shuffleTimer.Stop();
-                shuffleProgressBar.Value = shuffleProgressBar.Maximum;
+                shuffleProgressBar.Value = shuffleProgressBar.Maximum; // Ensure it ends at 100%
                 shuffleProgressBar.Visible = false;
                 SelectFinalRandomImage();
             }
         }
+
+
 
 
 
