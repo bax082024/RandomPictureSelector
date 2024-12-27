@@ -15,13 +15,28 @@ namespace RandomPictureSelector
         private int customShuffleSpeed = 100;// How many images to show during shuffle
         private int maxShuffleCount;
 
+        private const string SettingsFilePath = "UserSettings.json";
+
+        private string currentTheme = "Light";
+
+
 
 
         public RandomForm()
         {
             InitializeComponent();
-            shuffleTimer.Tick += shuffleTimer_Tick;
+            LoadSettings();
 
+            shuffleTimer.Tick += shuffleTimer_Tick;
+           
+            // Apply default theme if no settings are loaded
+            if (string.IsNullOrEmpty(currentTheme))
+            {
+                currentTheme = "DesignView";
+                ApplyTheme(currentTheme);
+            }
+
+            SaveSettings();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -401,6 +416,165 @@ namespace RandomPictureSelector
             shuffleProgressBar.Visible = true;
         }
 
+        private void SaveSettings()
+        {
+            try
+            {
+                var settings = new UserSettings
+                {
+                    MinShuffleCount = shuffleProgressBar.Minimum,
+                    ShuffleSpeed = customShuffleSpeed,
+                    SelectedTheme = currentTheme
+                };
 
+                string json = System.Text.Json.JsonSerializer.Serialize(settings, new System.Text.Json.JsonSerializerOptions
+                {
+                    WriteIndented = true // Make the JSON more readable
+                });
+
+                File.WriteAllText(SettingsFilePath, json);
+                Debug.WriteLine("Settings saved successfully.");
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Failed to save settings: {ex.Message}");
+            }
+        }
+
+
+
+        private void LoadSettings()
+        {
+            try
+            {
+                if (File.Exists(SettingsFilePath))
+                {
+                    string json = File.ReadAllText(SettingsFilePath);
+                    var settings = System.Text.Json.JsonSerializer.Deserialize<UserSettings>(json);
+
+                    if (settings != null)
+                    {
+                        shuffleProgressBar.Minimum = settings.MinShuffleCount;
+                        customShuffleSpeed = settings.ShuffleSpeed;
+                        currentTheme = settings.SelectedTheme;
+                        ApplyTheme(currentTheme);
+                        // Optional: Add a log message instead of showing a popup
+                        Debug.WriteLine("Settings loaded successfully.");
+                    }
+                }
+                else
+                {
+                    Debug.WriteLine("No settings file found. Default settings will be used.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Failed to load settings: {ex.Message}");
+            }
+        }
+
+
+
+        private void ApplyTheme(string theme)
+        {
+            this.Paint -= RandomForm_Paint; // Detach any existing Paint event to prevent conflicts
+
+            switch (theme)
+            {
+                case "Light":
+                    this.BackColor = Color.White;
+                    foreach (Control control in this.Controls)
+                    {
+                        control.BackColor = Color.White;
+                        control.ForeColor = Color.Black;
+                    }
+                    break;
+
+                case "Dark":
+                    this.BackColor = Color.Black;
+                    foreach (Control control in this.Controls)
+                    {
+                        control.BackColor = Color.Black;
+                        control.ForeColor = Color.White;
+                    }
+                    break;
+
+                case "Gradient":
+                    this.Paint += RandomForm_Paint; // Attach the Paint event for the gradient background
+                    foreach (Control control in this.Controls)
+                    {
+                        control.BackColor = Color.Transparent; // Ensure controls are transparent for gradient
+                        control.ForeColor = Color.White;
+                        if (control is Button button)
+                        {
+                            button.BackColor = Color.DimGray;
+                            button.FlatStyle = FlatStyle.Flat; // Optional: Flat style for modern look
+                        }
+                    }
+                    break;
+
+                case "DesignView":
+                default:
+                    this.BackColor = Color.LightYellow;
+                    foreach (Control control in this.Controls)
+                    {
+                        control.BackColor = Color.LightYellow;
+                        control.ForeColor = Color.Black;
+                    }
+                    break;
+            }
+
+            // Apply theme to menu strip separately
+            menuStrip1.BackColor = theme == "Dark" ? Color.Gray : Color.Beige;
+            menuStrip1.ForeColor = theme == "Dark" ? Color.White : Color.Black;
+        }
+
+        private void RandomForm_Paint(object sender, PaintEventArgs e)
+        {
+            var gradientBrush = new System.Drawing.Drawing2D.LinearGradientBrush(
+                this.ClientRectangle,
+                Color.LightBlue,
+                Color.DarkBlue,
+                System.Drawing.Drawing2D.LinearGradientMode.Vertical);
+            e.Graphics.FillRectangle(gradientBrush, this.ClientRectangle);
+        }
+
+
+        private void ChangeTheme(string theme)
+        {
+            currentTheme = theme; // Update the current theme
+            ApplyTheme(theme); // Apply the selected theme
+            SaveSettings(); // Save the selected theme in settings
+        }
+
+        private void saveSettiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveSettings();
+        }
+
+        private void loadSettingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadSettings();
+        }
+
+        private void RandomForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            SaveSettings();
+        }
+
+        private void lightToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangeTheme("Light");
+        }
+
+        private void darkToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangeTheme("Dark");
+        }
+
+        private void gradientToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangeTheme("Gradient");
+        }
     }
 }

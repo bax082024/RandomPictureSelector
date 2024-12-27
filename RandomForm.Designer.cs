@@ -52,6 +52,10 @@
             shuffleSettingsToolStripMenuItem = new ToolStripMenuItem();
             saveSettiToolStripMenuItem = new ToolStripMenuItem();
             loadSettingsToolStripMenuItem = new ToolStripMenuItem();
+            themesToolStripMenuItem = new ToolStripMenuItem();
+            lightToolStripMenuItem = new ToolStripMenuItem();
+            darkToolStripMenuItem = new ToolStripMenuItem();
+            gradientToolStripMenuItem = new ToolStripMenuItem();
             shuffleTimer = new System.Windows.Forms.Timer(components);
             MainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -147,7 +151,7 @@
             label2.Anchor = AnchorStyles.None;
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(808, 178);
+            label2.Location = new Point(810, 201);
             label2.Name = "label2";
             label2.Size = new Size(86, 17);
             label2.TabIndex = 8;
@@ -200,6 +204,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.DarkRed;
             label1.Location = new Point(271, 24);
             label1.Name = "label1";
             label1.Size = new Size(453, 50);
@@ -209,7 +214,7 @@
             // pictureBox1
             // 
             pictureBox1.Anchor = AnchorStyles.None;
-            pictureBox1.BackColor = Color.Black;
+            pictureBox1.BackColor = SystemColors.Info;
             pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox1.BorderStyle = BorderStyle.Fixed3D;
             pictureBox1.Location = new Point(315, 167);
@@ -259,7 +264,7 @@
             // menuStrip1
             // 
             menuStrip1.BackColor = Color.LightGray;
-            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, settingsToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, settingsToolStripMenuItem, themesToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(1009, 24);
@@ -290,27 +295,57 @@
             // shuffleSettingsToolStripMenuItem
             // 
             shuffleSettingsToolStripMenuItem.Name = "shuffleSettingsToolStripMenuItem";
-            shuffleSettingsToolStripMenuItem.Size = new Size(180, 22);
+            shuffleSettingsToolStripMenuItem.Size = new Size(156, 22);
             shuffleSettingsToolStripMenuItem.Text = "Shuffle Settings";
             shuffleSettingsToolStripMenuItem.Click += shuffleSettingsToolStripMenuItem_Click;
             // 
             // saveSettiToolStripMenuItem
             // 
             saveSettiToolStripMenuItem.Name = "saveSettiToolStripMenuItem";
-            saveSettiToolStripMenuItem.Size = new Size(180, 22);
+            saveSettiToolStripMenuItem.Size = new Size(156, 22);
             saveSettiToolStripMenuItem.Text = "Save Settings";
+            saveSettiToolStripMenuItem.Click += saveSettiToolStripMenuItem_Click;
             // 
             // loadSettingsToolStripMenuItem
             // 
             loadSettingsToolStripMenuItem.Name = "loadSettingsToolStripMenuItem";
-            loadSettingsToolStripMenuItem.Size = new Size(180, 22);
+            loadSettingsToolStripMenuItem.Size = new Size(156, 22);
             loadSettingsToolStripMenuItem.Text = "Load Settings";
+            loadSettingsToolStripMenuItem.Click += loadSettingsToolStripMenuItem_Click;
+            // 
+            // themesToolStripMenuItem
+            // 
+            themesToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { lightToolStripMenuItem, darkToolStripMenuItem, gradientToolStripMenuItem });
+            themesToolStripMenuItem.Name = "themesToolStripMenuItem";
+            themesToolStripMenuItem.Size = new Size(60, 20);
+            themesToolStripMenuItem.Text = "Themes";
+            // 
+            // lightToolStripMenuItem
+            // 
+            lightToolStripMenuItem.Name = "lightToolStripMenuItem";
+            lightToolStripMenuItem.Size = new Size(119, 22);
+            lightToolStripMenuItem.Text = "Light";
+            lightToolStripMenuItem.Click += lightToolStripMenuItem_Click;
+            // 
+            // darkToolStripMenuItem
+            // 
+            darkToolStripMenuItem.Name = "darkToolStripMenuItem";
+            darkToolStripMenuItem.Size = new Size(119, 22);
+            darkToolStripMenuItem.Text = "Dark";
+            darkToolStripMenuItem.Click += darkToolStripMenuItem_Click;
+            // 
+            // gradientToolStripMenuItem
+            // 
+            gradientToolStripMenuItem.Name = "gradientToolStripMenuItem";
+            gradientToolStripMenuItem.Size = new Size(119, 22);
+            gradientToolStripMenuItem.Text = "Gradient";
+            gradientToolStripMenuItem.Click += gradientToolStripMenuItem_Click;
             // 
             // RandomForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.LightYellow;
+            BackColor = Color.Goldenrod;
             ClientSize = new Size(1009, 669);
             Controls.Add(MainPanel);
             Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -354,5 +389,9 @@
         private ToolStripMenuItem shuffleSettingsToolStripMenuItem;
         private ToolStripMenuItem saveSettiToolStripMenuItem;
         private ToolStripMenuItem loadSettingsToolStripMenuItem;
+        private ToolStripMenuItem themesToolStripMenuItem;
+        private ToolStripMenuItem lightToolStripMenuItem;
+        private ToolStripMenuItem darkToolStripMenuItem;
+        private ToolStripMenuItem gradientToolStripMenuItem;
     }
 }

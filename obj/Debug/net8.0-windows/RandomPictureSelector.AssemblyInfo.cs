@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RandomPictureSelector")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9e0de3567078c021198fedfa57602b3b2a10ad89")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+709aa5b7eddb20c87295a547cb47e39af0d859cd")]
 [assembly: System.Reflection.AssemblyProductAttribute("RandomPictureSelector")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RandomPictureSelector")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
