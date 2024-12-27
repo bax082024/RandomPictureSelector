@@ -44,6 +44,11 @@ namespace RandomPictureSelector
 
             int randomIndex = random.Next(imagePaths.Count);
             string selectedImage = imagePaths[randomIndex];
+
+            pictureBox1.Image = Image.FromFile(selectedImage);
+
+            usedImagePaths.Add(selectedImage);
+            listBox2.Items.Add(System.IO.Path.GetFileName(selectedImage));
         }
     }
 }
