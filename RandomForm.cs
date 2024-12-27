@@ -61,6 +61,15 @@ namespace RandomPictureSelector
                 MessageBox.Show("No images to move back!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
+
+            foreach (string filePath in usedImagePaths)
+            {
+                imagePaths.Add(filePath);
+                listBox1.Items.Add(System.IO.Path.GetFileName(filePath));
+            }
+
+            usedImagePaths.Clear();
+            listBox2.Items.Clear();
         }
     }
 }
