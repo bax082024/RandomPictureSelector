@@ -56,8 +56,11 @@
             lightToolStripMenuItem = new ToolStripMenuItem();
             darkToolStripMenuItem = new ToolStripMenuItem();
             gradientToolStripMenuItem = new ToolStripMenuItem();
-            shuffleTimer = new System.Windows.Forms.Timer(components);
+            blueToolStripMenuItem = new ToolStripMenuItem();
+            orangeToolStripMenuItem = new ToolStripMenuItem();
+            purpleToolStripMenuItem = new ToolStripMenuItem();
             defaultToolStripMenuItem = new ToolStripMenuItem();
+            shuffleTimer = new System.Windows.Forms.Timer(components);
             MainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             statusStrip1.SuspendLayout();
@@ -152,7 +155,7 @@
             label2.Anchor = AnchorStyles.None;
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(810, 201);
+            label2.Location = new Point(810, 134);
             label2.Name = "label2";
             label2.Size = new Size(86, 17);
             label2.TabIndex = 8;
@@ -164,7 +167,7 @@
             btnAdd.BackColor = Color.DarkGray;
             btnAdd.FlatStyle = FlatStyle.Popup;
             btnAdd.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnAdd.Location = new Point(61, 236);
+            btnAdd.Location = new Point(61, 167);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(178, 34);
             btnAdd.TabIndex = 7;
@@ -178,7 +181,7 @@
             btnMove.BackColor = Color.DarkGray;
             btnMove.FlatStyle = FlatStyle.Popup;
             btnMove.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnMove.Location = new Point(765, 234);
+            btnMove.Location = new Point(765, 167);
             btnMove.Name = "btnMove";
             btnMove.Size = new Size(178, 34);
             btnMove.TabIndex = 6;
@@ -203,14 +206,15 @@
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.DarkRed;
-            label1.Location = new Point(271, 24);
+            label1.Font = new Font("Ravie", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.DarkOliveGreen;
+            label1.Location = new Point(178, 34);
             label1.Name = "label1";
-            label1.Size = new Size(453, 50);
+            label1.Size = new Size(669, 50);
             label1.TabIndex = 4;
-            label1.Text = "Random Picture Chooser";
+            label1.Text = "Random Picture Selector";
             // 
             // pictureBox1
             // 
@@ -231,9 +235,9 @@
             listBox2.BackColor = Color.LemonChiffon;
             listBox2.FormattingEnabled = true;
             listBox2.ItemHeight = 15;
-            listBox2.Location = new Point(765, 283);
+            listBox2.Location = new Point(765, 216);
             listBox2.Name = "listBox2";
-            listBox2.Size = new Size(178, 259);
+            listBox2.Size = new Size(178, 319);
             listBox2.TabIndex = 2;
             // 
             // listBox1
@@ -243,9 +247,9 @@
             listBox1.BackColor = Color.LemonChiffon;
             listBox1.FormattingEnabled = true;
             listBox1.ItemHeight = 15;
-            listBox1.Location = new Point(61, 283);
+            listBox1.Location = new Point(61, 214);
             listBox1.Name = "listBox1";
-            listBox1.Size = new Size(178, 259);
+            listBox1.Size = new Size(178, 319);
             listBox1.TabIndex = 1;
             listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
             // 
@@ -326,28 +330,50 @@
             // lightToolStripMenuItem
             // 
             lightToolStripMenuItem.Name = "lightToolStripMenuItem";
-            lightToolStripMenuItem.Size = new Size(180, 22);
+            lightToolStripMenuItem.Size = new Size(119, 22);
             lightToolStripMenuItem.Text = "Light";
             lightToolStripMenuItem.Click += lightToolStripMenuItem_Click;
             // 
             // darkToolStripMenuItem
             // 
             darkToolStripMenuItem.Name = "darkToolStripMenuItem";
-            darkToolStripMenuItem.Size = new Size(180, 22);
+            darkToolStripMenuItem.Size = new Size(119, 22);
             darkToolStripMenuItem.Text = "Dark";
             darkToolStripMenuItem.Click += darkToolStripMenuItem_Click;
             // 
             // gradientToolStripMenuItem
             // 
+            gradientToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { blueToolStripMenuItem, orangeToolStripMenuItem, purpleToolStripMenuItem });
             gradientToolStripMenuItem.Name = "gradientToolStripMenuItem";
-            gradientToolStripMenuItem.Size = new Size(180, 22);
+            gradientToolStripMenuItem.Size = new Size(119, 22);
             gradientToolStripMenuItem.Text = "Gradient";
             gradientToolStripMenuItem.Click += gradientToolStripMenuItem_Click;
+            // 
+            // blueToolStripMenuItem
+            // 
+            blueToolStripMenuItem.Name = "blueToolStripMenuItem";
+            blueToolStripMenuItem.Size = new Size(113, 22);
+            blueToolStripMenuItem.Text = "Blue";
+            blueToolStripMenuItem.Click += blueToolStripMenuItem_Click;
+            // 
+            // orangeToolStripMenuItem
+            // 
+            orangeToolStripMenuItem.Name = "orangeToolStripMenuItem";
+            orangeToolStripMenuItem.Size = new Size(113, 22);
+            orangeToolStripMenuItem.Text = "Orange";
+            orangeToolStripMenuItem.Click += orangeToolStripMenuItem_Click;
+            // 
+            // purpleToolStripMenuItem
+            // 
+            purpleToolStripMenuItem.Name = "purpleToolStripMenuItem";
+            purpleToolStripMenuItem.Size = new Size(113, 22);
+            purpleToolStripMenuItem.Text = "Purple";
+            purpleToolStripMenuItem.Click += purpleToolStripMenuItem_Click;
             // 
             // defaultToolStripMenuItem
             // 
             defaultToolStripMenuItem.Name = "defaultToolStripMenuItem";
-            defaultToolStripMenuItem.Size = new Size(180, 22);
+            defaultToolStripMenuItem.Size = new Size(119, 22);
             defaultToolStripMenuItem.Text = "Default";
             defaultToolStripMenuItem.Click += defaultToolStripMenuItem_Click;
             // 
@@ -404,5 +430,8 @@
         private ToolStripMenuItem darkToolStripMenuItem;
         private ToolStripMenuItem gradientToolStripMenuItem;
         private ToolStripMenuItem defaultToolStripMenuItem;
+        private ToolStripMenuItem blueToolStripMenuItem;
+        private ToolStripMenuItem orangeToolStripMenuItem;
+        private ToolStripMenuItem purpleToolStripMenuItem;
     }
 }

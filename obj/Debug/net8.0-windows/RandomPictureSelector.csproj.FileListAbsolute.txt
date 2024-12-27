@@ -16,3 +16,9 @@ C:\HjemmeKode\C-Sharp\MyProjects\RandomPictureSelector\obj\Debug\net8.0-windows\
 C:\HjemmeKode\C-Sharp\MyProjects\RandomPictureSelector\obj\Debug\net8.0-windows\RandomPictureSelector.pdb
 C:\HjemmeKode\C-Sharp\MyProjects\RandomPictureSelector\obj\Debug\net8.0-windows\RandomPictureSelector.genruntimeconfig.cache
 C:\HjemmeKode\C-Sharp\MyProjects\RandomPictureSelector\obj\Debug\net8.0-windows\ref\RandomPictureSelector.dll
+C:\HjemmeKode\C-Sharp\MyProjects\RandomPictureSelector\bin\Debug\net8.0-windows\Images\blue.png
+C:\HjemmeKode\C-Sharp\MyProjects\RandomPictureSelector\bin\Debug\net8.0-windows\Images\dark.png
+C:\HjemmeKode\C-Sharp\MyProjects\RandomPictureSelector\bin\Debug\net8.0-windows\Images\default.png
+C:\HjemmeKode\C-Sharp\MyProjects\RandomPictureSelector\bin\Debug\net8.0-windows\Images\light.png
+C:\HjemmeKode\C-Sharp\MyProjects\RandomPictureSelector\bin\Debug\net8.0-windows\Images\orange.png
+C:\HjemmeKode\C-Sharp\MyProjects\RandomPictureSelector\bin\Debug\net8.0-windows\Images\purple.png
