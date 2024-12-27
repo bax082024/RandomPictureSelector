@@ -141,5 +141,30 @@ namespace RandomPictureSelector
             }
         }
 
+        private void listBox1_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+
+            foreach (string file in files)
+            {
+                // Check if the file is an image
+                if (file.EndsWith(".jpg") || file.EndsWith(".jpeg") || file.EndsWith(".png") || file.EndsWith(".bmp"))
+                {
+                    if (!imagePaths.Contains(file))
+                    {
+                        imagePaths.Add(file);
+                        listBox1.Items.Add(System.IO.Path.GetFileName(file));
+                    }
+                }
+                else
+                {
+                    MessageBox.Show($"The file '{System.IO.Path.GetFileName(file)}' is not a supported image type.",
+                                    "Invalid File",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Warning);
+                }
+            }
+        }
+
     }
 }
