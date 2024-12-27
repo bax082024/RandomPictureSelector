@@ -376,5 +376,14 @@ namespace RandomPictureSelector
             }
         }
 
+
+        private void ResetProgressBar(int calculatedShuffleCount)
+        {
+            shuffleProgressBar.Minimum = 0;
+            shuffleProgressBar.Maximum = calculatedShuffleCount;
+            shuffleProgressBar.Value = 0;
+            shuffleProgressBar.Visible = true;
+        }
+
     }
 }
