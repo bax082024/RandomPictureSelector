@@ -277,7 +277,8 @@ namespace RandomPictureSelector
             }
 
             // Display the next image in the shuffle, fixing its orientation
-            pictureBox1.Image = FixImageOrientation(Image.FromFile(imagePaths[shuffleIndex]));
+            pictureBox1.Image = FixImageOrientation(LoadImageSafely(imagePaths[shuffleIndex]));
+
 
             // Cycle through the images
             shuffleIndex = (shuffleIndex + 1) % imagePaths.Count;
@@ -317,6 +318,20 @@ namespace RandomPictureSelector
             imagePaths.RemoveAt(randomIndex);
             listBox1.Items.RemoveAt(randomIndex);
         }
+
+        private Image LoadImageSafely(string filePath)
+        {
+            try
+            {
+                return Image.FromFile(filePath);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Failed to load image: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
 
 
 
