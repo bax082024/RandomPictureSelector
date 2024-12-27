@@ -49,6 +49,9 @@ namespace RandomPictureSelector
 
             usedImagePaths.Add(selectedImage);
             listBox2.Items.Add(System.IO.Path.GetFileName(selectedImage));
+
+            imagePaths.RemoveAt(randomIndex);
+            listBox1.Items.RemoveAt(randomIndex);
         }
     }
 }
