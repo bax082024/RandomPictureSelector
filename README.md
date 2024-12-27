@@ -49,10 +49,5 @@ and allows users to manage their image lists with save and load functionality.
 ---
 
 ## Screenshots
-### Light Theme
-![Light Theme](Images/light.png)
-![Dark Theme](Images/dark.png )
-![ ]( )
-![ ]( )
-![ ]( )
-![ ]( )
+<img src="Images/light.png" alt="1" width="250"><img src="Images/dark.png" alt="2" width="250"><img src="Images/default.png" alt="3" width="250">
+<img src="Images/blue.png" alt="4" width="250"><img src="Images/orange.png" alt="5" width="250"><img src="Images/purple.png" alt="6" width="250">
