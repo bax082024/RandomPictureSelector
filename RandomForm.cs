@@ -478,8 +478,28 @@ namespace RandomPictureSelector
                         control.ForeColor = Color.White;
                     }
                     break;
+                case "Gradient":
+                    this.Paint += (sender, e) =>
+                    {
+                        var gradientBrush = new System.Drawing.Drawing2D.LinearGradientBrush(
+                            this.ClientRectangle,
+                            Color.LightBlue,
+                            Color.DarkBlue,
+                            System.Drawing.Drawing2D.LinearGradientMode.Vertical);
+                        e.Graphics.FillRectangle(gradientBrush, this.ClientRectangle);
+                    };
+                    foreach (Control control in this.Controls)
+                    {
+                        control.BackColor = Color.Transparent;
+                        control.ForeColor = Color.White;
+                    }
+                    break;
 
+                default:
+                    ApplyTheme("Light"); // Fallback to Light theme
+                    break;
             }
+        }
         }
 
         private void saveSettiToolStripMenuItem_Click(object sender, EventArgs e)
