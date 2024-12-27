@@ -1,4 +1,5 @@
 using RandomPictureSelector.UI;
+using System.Diagnostics;
 
 namespace RandomPictureSelector
 {
@@ -12,6 +13,7 @@ namespace RandomPictureSelector
         private int shuffleIndex = 0; // Tracks the current image being shown
         private int shuffleCount = 0; // Counts how many times images have been shuffled
         private int customShuffleSpeed = 100;// How many images to show during shuffle
+        private int maxShuffleCount;
 
 
 
@@ -56,16 +58,14 @@ namespace RandomPictureSelector
             shuffleCount = 0;
 
             // Dynamically set MaxShuffleCount
-            int calculatedShuffleCount = Math.Max(20, imagePaths.Count); // Minimum 20 or the number of images
-            shuffleProgressBar.Minimum = 0; // Ensure minimum is valid
-            shuffleProgressBar.Maximum = calculatedShuffleCount; // Set the maximum dynamically
+            maxShuffleCount = Math.Max(20, Math.Min(imagePaths.Count, shuffleProgressBar.Maximum)); // Minimum 20 or the number of images
+            shuffleProgressBar.Maximum = maxShuffleCount;
 
             // Reset progress bar
-            shuffleProgressBar.Value = 0; // Reset progress value within bounds
-            shuffleProgressBar.Visible = true;
+            ResetProgressBar(maxShuffleCount);
 
             // Update the shuffle label
-            lblShuffleStatus.Text = $"Shuffling... 0/{calculatedShuffleCount}";
+            lblShuffleStatus.Text = $"Shuffling... 0/{maxShuffleCount}";
 
             // Show the first image immediately
             if (imagePaths.Count > 0)
@@ -78,6 +78,9 @@ namespace RandomPictureSelector
             shuffleTimer.Interval = customShuffleSpeed;
             shuffleTimer.Start();
         }
+
+
+
 
 
         private void btnMove_Click(object sender, EventArgs e)
@@ -300,16 +303,16 @@ namespace RandomPictureSelector
             // Cycle through the images
             shuffleIndex = (shuffleIndex + 1) % imagePaths.Count;
 
-            // Update progress bar and label
+            // Increment shuffle counter and update progress bar
             shuffleCount++;
-            shuffleProgressBar.Value = Math.Min(shuffleCount, shuffleProgressBar.Maximum);
-            lblShuffleStatus.Text = $"Shuffling... {shuffleCount}/{shuffleProgressBar.Maximum}";
+            shuffleProgressBar.Value = Math.Min(shuffleCount, maxShuffleCount);
+            lblShuffleStatus.Text = $"Shuffling... {shuffleCount}/{maxShuffleCount}";
 
             // Stop after reaching the maximum shuffle count
-            if (shuffleCount >= shuffleProgressBar.Maximum)
+            if (shuffleCount >= maxShuffleCount)
             {
                 shuffleTimer.Stop();
-                shuffleProgressBar.Value = shuffleProgressBar.Maximum; 
+                shuffleProgressBar.Value = shuffleProgressBar.Maximum;
                 shuffleProgressBar.Visible = false;
                 lblShuffleStatus.Text = "Shuffle complete!";
                 SelectFinalRandomImage();
@@ -321,8 +324,17 @@ namespace RandomPictureSelector
 
 
 
+
+
+
         private void SelectFinalRandomImage()
         {
+            if (imagePaths.Count == 0)
+            {
+                lblShuffleStatus.Text = "No images to display!";
+                return;
+            }
+
             // Select a random image
             int randomIndex = random.Next(imagePaths.Count);
             string selectedImage = imagePaths[randomIndex];
@@ -336,7 +348,10 @@ namespace RandomPictureSelector
 
             imagePaths.RemoveAt(randomIndex);
             listBox1.Items.RemoveAt(randomIndex);
+
+            lblShuffleStatus.Text = "Final image selected!";
         }
+
 
         private Image LoadImageSafely(string filePath)
         {
@@ -377,6 +392,7 @@ namespace RandomPictureSelector
         }
 
 
+
         private void ResetProgressBar(int calculatedShuffleCount)
         {
             shuffleProgressBar.Minimum = 0;
@@ -384,6 +400,7 @@ namespace RandomPictureSelector
             shuffleProgressBar.Value = 0;
             shuffleProgressBar.Visible = true;
         }
+
 
     }
 }
