@@ -47,6 +47,7 @@
             fileToolStripMenuItem = new ToolStripMenuItem();
             exitToolStripMenuItem = new ToolStripMenuItem();
             shuffleTimer = new System.Windows.Forms.Timer(components);
+            shuffleProgressBar = new ProgressBar();
             MainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             statusStrip1.SuspendLayout();
@@ -56,6 +57,7 @@
             // MainPanel
             // 
             MainPanel.BackColor = Color.Transparent;
+            MainPanel.Controls.Add(shuffleProgressBar);
             MainPanel.Controls.Add(btnLoad);
             MainPanel.Controls.Add(btnSave);
             MainPanel.Controls.Add(btnExit);
@@ -162,7 +164,7 @@
             btnRandom.BackColor = Color.LightGray;
             btnRandom.FlatStyle = FlatStyle.Popup;
             btnRandom.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnRandom.Location = new Point(416, 565);
+            btnRandom.Location = new Point(414, 574);
             btnRandom.Name = "btnRandom";
             btnRandom.Size = new Size(163, 50);
             btnRandom.TabIndex = 5;
@@ -254,6 +256,15 @@
             exitToolStripMenuItem.Text = "Exit";
             exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
             // 
+            // shuffleProgressBar
+            // 
+            shuffleProgressBar.Anchor = AnchorStyles.None;
+            shuffleProgressBar.Location = new Point(301, 548);
+            shuffleProgressBar.Maximum = 20;
+            shuffleProgressBar.Name = "shuffleProgressBar";
+            shuffleProgressBar.Size = new Size(400, 16);
+            shuffleProgressBar.TabIndex = 13;
+            // 
             // RandomForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -296,5 +307,6 @@
         private Button btnSave;
         private Button btnLoad;
         private System.Windows.Forms.Timer shuffleTimer;
+        private ProgressBar shuffleProgressBar;
     }
 }

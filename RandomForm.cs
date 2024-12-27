@@ -52,6 +52,11 @@ namespace RandomPictureSelector
             shuffleIndex = 0;
             shuffleCount = 0;
 
+
+            shuffleProgressBar.Value = 0;
+            shuffleProgressBar.Maximum = MaxShuffleCount;
+            shuffleProgressBar.Visible = true;
+
             // Start the shuffle timer
             shuffleTimer.Start();
         }
@@ -260,6 +265,7 @@ namespace RandomPictureSelector
             if (imagePaths.Count == 0)
             {
                 shuffleTimer.Stop();
+                shuffleProgressBar.Visible = false;
                 return;
             }
 
@@ -269,11 +275,15 @@ namespace RandomPictureSelector
             // Cycle through the images
             shuffleIndex = (shuffleIndex + 1) % imagePaths.Count;
 
+            // Update progress bar
+            shuffleProgressBar.Value = shuffleCount;
+
             // Stop after a fixed number of shuffles
             shuffleCount++;
             if (shuffleCount >= MaxShuffleCount)
             {
                 shuffleTimer.Stop();
+                shuffleProgressBar.Visible = false;
                 SelectFinalRandomImage();
             }
         }
