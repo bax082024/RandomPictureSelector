@@ -37,7 +37,7 @@
             label1 = new Label();
             btnRandom = new Button();
             btnMove = new Button();
-            button1 = new Button();
+            btnAdd = new Button();
             MainPanel.SuspendLayout();
             statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -46,7 +46,7 @@
             // MainPanel
             // 
             MainPanel.BackColor = Color.Transparent;
-            MainPanel.Controls.Add(button1);
+            MainPanel.Controls.Add(btnAdd);
             MainPanel.Controls.Add(btnMove);
             MainPanel.Controls.Add(btnRandom);
             MainPanel.Controls.Add(label1);
@@ -142,14 +142,17 @@
             btnMove.TextAlign = ContentAlignment.MiddleLeft;
             btnMove.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // btnAdd
             // 
-            button1.Location = new Point(99, 250);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 7;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
+            btnAdd.BackColor = Color.LightGray;
+            btnAdd.FlatStyle = FlatStyle.Popup;
+            btnAdd.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAdd.Location = new Point(61, 236);
+            btnAdd.Name = "btnAdd";
+            btnAdd.Size = new Size(178, 34);
+            btnAdd.TabIndex = 7;
+            btnAdd.Text = "Add Image";
+            btnAdd.UseVisualStyleBackColor = false;
             // 
             // RandomForm
             // 
@@ -180,6 +183,6 @@
         private Label label1;
         private Button btnRandom;
         private Button btnMove;
-        private Button button1;
+        private Button btnAdd;
     }
 }
