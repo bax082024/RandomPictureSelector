@@ -17,10 +17,7 @@ namespace RandomPictureSelector
         private const string SettingsFilePath = "UserSettings.json";
 
         private GradientType currentGradient = GradientType.LightBlueToDarkBlue;
-        private string currentTheme = "Light";
-
-
-
+        private string currentTheme = "DesignView";
 
         public RandomForm()
         {
@@ -447,13 +444,13 @@ namespace RandomPictureSelector
             switch (theme)
             {
                 case "Light":
-                    backgroundColor = Color.White;
+                    backgroundColor = Color.Snow;
                     textColor = Color.Black;
                     buttonBackgroundColor = Color.LightGray;
                     buttonTextColor = Color.Black;
-                    listBoxBackgroundColor = Color.White;
+                    listBoxBackgroundColor = Color.Snow;
                     listBoxTextColor = Color.Black;
-                    menuStripBackgroundColor = Color.White;
+                    menuStripBackgroundColor = Color.Snow;
                     menuStripTextColor = Color.Black;
                     break;
 
@@ -472,22 +469,22 @@ namespace RandomPictureSelector
                     this.Paint += RandomForm_Paint;
 
                     backgroundColor = Color.Transparent;
-                    textColor = Color.White;
+                    textColor = Color.Black;
                     buttonBackgroundColor = Color.DarkGray;
-                    buttonTextColor = Color.White;
+                    buttonTextColor = Color.Black;
                     listBoxBackgroundColor = Color.Gray;
-                    listBoxTextColor = Color.White;
+                    listBoxTextColor = Color.Black;
                     menuStripBackgroundColor = Color.DarkGray;
-                    menuStripTextColor = Color.White;
+                    menuStripTextColor = Color.Black;
                     break;
 
                 case "DesignView":
                 default:
-                    backgroundColor = Color.LightYellow;
+                    backgroundColor = Color.Goldenrod;
                     textColor = Color.Black;
                     buttonBackgroundColor = Color.LightGoldenrodYellow;
                     buttonTextColor = Color.Black;
-                    listBoxBackgroundColor = Color.LightYellow;
+                    listBoxBackgroundColor = Color.Goldenrod;
                     listBoxTextColor = Color.Black;
                     menuStripBackgroundColor = Color.Beige;
                     menuStripTextColor = Color.Black;

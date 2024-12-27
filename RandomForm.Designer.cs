@@ -206,14 +206,15 @@
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.DarkRed;
-            label1.Location = new Point(271, 24);
+            label1.Font = new Font("Ravie", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.DarkOliveGreen;
+            label1.Location = new Point(178, 34);
             label1.Name = "label1";
-            label1.Size = new Size(453, 50);
+            label1.Size = new Size(669, 50);
             label1.TabIndex = 4;
-            label1.Text = "Random Picture Chooser";
+            label1.Text = "Random Picture Selector";
             // 
             // pictureBox1
             // 
@@ -329,14 +330,14 @@
             // lightToolStripMenuItem
             // 
             lightToolStripMenuItem.Name = "lightToolStripMenuItem";
-            lightToolStripMenuItem.Size = new Size(180, 22);
+            lightToolStripMenuItem.Size = new Size(119, 22);
             lightToolStripMenuItem.Text = "Light";
             lightToolStripMenuItem.Click += lightToolStripMenuItem_Click;
             // 
             // darkToolStripMenuItem
             // 
             darkToolStripMenuItem.Name = "darkToolStripMenuItem";
-            darkToolStripMenuItem.Size = new Size(180, 22);
+            darkToolStripMenuItem.Size = new Size(119, 22);
             darkToolStripMenuItem.Text = "Dark";
             darkToolStripMenuItem.Click += darkToolStripMenuItem_Click;
             // 
@@ -344,35 +345,35 @@
             // 
             gradientToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { blueToolStripMenuItem, orangeToolStripMenuItem, purpleToolStripMenuItem });
             gradientToolStripMenuItem.Name = "gradientToolStripMenuItem";
-            gradientToolStripMenuItem.Size = new Size(180, 22);
+            gradientToolStripMenuItem.Size = new Size(119, 22);
             gradientToolStripMenuItem.Text = "Gradient";
             gradientToolStripMenuItem.Click += gradientToolStripMenuItem_Click;
             // 
             // blueToolStripMenuItem
             // 
             blueToolStripMenuItem.Name = "blueToolStripMenuItem";
-            blueToolStripMenuItem.Size = new Size(180, 22);
+            blueToolStripMenuItem.Size = new Size(113, 22);
             blueToolStripMenuItem.Text = "Blue";
             blueToolStripMenuItem.Click += blueToolStripMenuItem_Click;
             // 
             // orangeToolStripMenuItem
             // 
             orangeToolStripMenuItem.Name = "orangeToolStripMenuItem";
-            orangeToolStripMenuItem.Size = new Size(180, 22);
+            orangeToolStripMenuItem.Size = new Size(113, 22);
             orangeToolStripMenuItem.Text = "Orange";
             orangeToolStripMenuItem.Click += orangeToolStripMenuItem_Click;
             // 
             // purpleToolStripMenuItem
             // 
             purpleToolStripMenuItem.Name = "purpleToolStripMenuItem";
-            purpleToolStripMenuItem.Size = new Size(180, 22);
+            purpleToolStripMenuItem.Size = new Size(113, 22);
             purpleToolStripMenuItem.Text = "Purple";
             purpleToolStripMenuItem.Click += purpleToolStripMenuItem_Click;
             // 
             // defaultToolStripMenuItem
             // 
             defaultToolStripMenuItem.Name = "defaultToolStripMenuItem";
-            defaultToolStripMenuItem.Size = new Size(180, 22);
+            defaultToolStripMenuItem.Size = new Size(119, 22);
             defaultToolStripMenuItem.Text = "Default";
             defaultToolStripMenuItem.Click += defaultToolStripMenuItem_Click;
             // 
@@ -380,7 +381,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.Goldenrod;
+            BackColor = Color.Snow;
             ClientSize = new Size(1009, 669);
             Controls.Add(MainPanel);
             Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
