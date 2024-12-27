@@ -25,3 +25,23 @@ and allows users to manage their image lists with save and load functionality.
 - **Drag and Drop**: Drag images directly into the application for easy adding.
 
 ---
+
+## How to Use
+1. **Add Images**:
+   - Click the `Add Image` button.
+   - Select the images you want to add (supports `.jpg`, `.jpeg`, `.png`, `.bmp`).
+   - The selected images will appear in the `Inserted Images` list.
+   
+2. **Shuffle Images**:
+   - Click the `START` button to shuffle images.
+   - The application will display a sequence of images and randomly select the final image.
+   
+3. **Move Images**:
+   - Use the `Move` button to transfer images from the `Used Images` list back to the `Inserted Images` list.
+   
+4. **Save and Load**:
+   - Save your image lists using the `Save` button.
+   - Load previously saved image lists using the `Load` button.
+
+5. **Change Theme**:
+   - Go to the `Themes` menu and select your preferred theme or gradient.
