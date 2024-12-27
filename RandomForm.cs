@@ -53,6 +53,9 @@ namespace RandomPictureSelector
             shuffleIndex = 0;
             shuffleCount = 0;
 
+            lblShuffleStatus.Text = "Shuffling... 0/" + MaxShuffleCount;
+
+
 
             // Set up and show progress bar
             shuffleProgressBar.Value = 0; // Reset progress
@@ -292,6 +295,9 @@ namespace RandomPictureSelector
             // Cycle through the images
             shuffleIndex = (shuffleIndex + 1) % imagePaths.Count;
 
+            lblShuffleStatus.Text = $"Shuffling... {shuffleCount}/{MaxShuffleCount}";
+
+
             // Increment progress bar faster to sync better
             shuffleProgressBar.Value = Math.Min(shuffleProgressBar.Value + 2, shuffleProgressBar.Maximum);
 
@@ -304,6 +310,8 @@ namespace RandomPictureSelector
                 shuffleTimer.Stop();
                 shuffleProgressBar.Value = shuffleProgressBar.Maximum; // Ensure it ends at 100%
                 shuffleProgressBar.Visible = false;
+                lblShuffleStatus.Text = "Shuffle complete!";
+
                 SelectFinalRandomImage();
             }
         }

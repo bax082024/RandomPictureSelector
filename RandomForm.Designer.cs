@@ -48,6 +48,7 @@
             fileToolStripMenuItem = new ToolStripMenuItem();
             exitToolStripMenuItem = new ToolStripMenuItem();
             shuffleTimer = new System.Windows.Forms.Timer(components);
+            lblShuffleStatus = new Label();
             MainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             statusStrip1.SuspendLayout();
@@ -57,6 +58,7 @@
             // MainPanel
             // 
             MainPanel.BackColor = Color.Transparent;
+            MainPanel.Controls.Add(lblShuffleStatus);
             MainPanel.Controls.Add(shuffleProgressBar);
             MainPanel.Controls.Add(btnLoad);
             MainPanel.Controls.Add(btnSave);
@@ -173,7 +175,7 @@
             btnRandom.BackColor = Color.LightGray;
             btnRandom.FlatStyle = FlatStyle.Popup;
             btnRandom.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnRandom.Location = new Point(414, 574);
+            btnRandom.Location = new Point(413, 592);
             btnRandom.Name = "btnRandom";
             btnRandom.Size = new Size(163, 50);
             btnRandom.TabIndex = 5;
@@ -265,6 +267,15 @@
             exitToolStripMenuItem.Text = "Exit";
             exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
             // 
+            // lblShuffleStatus
+            // 
+            lblShuffleStatus.AutoSize = true;
+            lblShuffleStatus.Location = new Point(439, 567);
+            lblShuffleStatus.Name = "lblShuffleStatus";
+            lblShuffleStatus.Size = new Size(15, 15);
+            lblShuffleStatus.TabIndex = 14;
+            lblShuffleStatus.Text = "``";
+            // 
             // RandomForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -308,5 +319,6 @@
         private Button btnLoad;
         private System.Windows.Forms.Timer shuffleTimer;
         private ProgressBar shuffleProgressBar;
+        private Label lblShuffleStatus;
     }
 }
