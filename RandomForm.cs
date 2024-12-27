@@ -276,7 +276,7 @@ namespace RandomPictureSelector
             shuffleIndex = (shuffleIndex + 1) % imagePaths.Count;
 
             // Update progress bar
-            shuffleProgressBar.Value = shuffleCount;
+            shuffleProgressBar.Value = Math.Min(shuffleCount + 1, shuffleProgressBar.Maximum);
 
             // Stop after a fixed number of shuffles
             shuffleCount++;
