@@ -5,14 +5,13 @@ namespace RandomPictureSelector
 {
     public partial class RandomForm : Form
     {
-        private List<string> imagePaths = new List<string>(); // Paths for listBox1
-        private List<string> usedImagePaths = new List<string>(); // Paths for listBox2
-        private Random random = new Random(); // For random selection
+        private List<string> imagePaths = new List<string>();
+        private List<string> usedImagePaths = new List<string>();
+        private Random random = new Random();
 
-        // Shuffle
-        private int shuffleIndex = 0; // Tracks the current image being shown
-        private int shuffleCount = 0; // Counts how many times images have been shuffled
-        private int customShuffleSpeed = 100;// How many images to show during shuffle
+        private int shuffleIndex = 0;
+        private int shuffleCount = 0;
+        private int customShuffleSpeed = 100;
         private int maxShuffleCount;
 
         private const string SettingsFilePath = "UserSettings.json";
@@ -30,7 +29,6 @@ namespace RandomPictureSelector
 
             shuffleTimer.Tick += shuffleTimer_Tick;
 
-            // Apply default theme if no settings are loaded
             if (string.IsNullOrEmpty(currentTheme))
             {
                 currentTheme = "DesignView";
@@ -54,7 +52,7 @@ namespace RandomPictureSelector
                         if (!imagePaths.Contains(filePath))
                         {
                             imagePaths.Add(filePath);
-                            listBox1.Items.Add(System.IO.Path.GetFileName(filePath)); // Add filename to listBox1
+                            listBox1.Items.Add(System.IO.Path.GetFileName(filePath));
                         }
                     }
                 }
@@ -69,35 +67,25 @@ namespace RandomPictureSelector
                 return;
             }
 
-            // Reset shuffle variables
             shuffleIndex = 0;
             shuffleCount = 0;
 
-            // Dynamically set MaxShuffleCount
-            maxShuffleCount = Math.Max(20, Math.Min(imagePaths.Count, shuffleProgressBar.Maximum)); // Minimum 20 or the number of images
+            maxShuffleCount = Math.Max(20, Math.Min(imagePaths.Count, shuffleProgressBar.Maximum));
             shuffleProgressBar.Maximum = maxShuffleCount;
 
-            // Reset progress bar
             ResetProgressBar(maxShuffleCount);
 
-            // Update the shuffle label
             lblShuffleStatus.Text = $"Shuffling... 0/{maxShuffleCount}";
 
-            // Show the first image immediately
             if (imagePaths.Count > 0)
             {
                 pictureBox1.Image = FixImageOrientation(LoadImageSafely(imagePaths[shuffleIndex]));
-                shuffleProgressBar.Value = 1; // Start progress bar at 1
+                shuffleProgressBar.Value = 1; 
             }
 
-            // Start the shuffle timer
             shuffleTimer.Interval = customShuffleSpeed;
             shuffleTimer.Start();
         }
-
-
-
-
 
         private void btnMove_Click(object sender, EventArgs e)
         {
@@ -129,7 +117,7 @@ namespace RandomPictureSelector
 
         private Image FixImageOrientation(Image img)
         {
-            const int ExifOrientationId = 0x112; // EXIF tag for Orientation
+            const int ExifOrientationId = 0x112;
 
             try
             {
@@ -141,28 +129,26 @@ namespace RandomPictureSelector
                     {
                         int orientation = BitConverter.ToUInt16(prop.Value, 0);
 
-                        // Apply necessary rotation based on orientation value
                         switch (orientation)
                         {
-                            case 3: // 180 degrees
+                            case 3:
                                 img.RotateFlip(RotateFlipType.Rotate180FlipNone);
                                 break;
-                            case 6: // 90 degrees clockwise
+                            case 6:
                                 img.RotateFlip(RotateFlipType.Rotate90FlipNone);
                                 break;
-                            case 8: // 90 degrees counterclockwise
+                            case 8:
                                 img.RotateFlip(RotateFlipType.Rotate270FlipNone);
                                 break;
                         }
-
-                        // Remove the EXIF orientation tag to prevent reapplying rotation
+         
                         img.RemovePropertyItem(ExifOrientationId);
                     }
                 }
             }
             catch
             {
-                // If something goes wrong, we just return the image as is.
+
             }
 
             return img;
@@ -176,14 +162,13 @@ namespace RandomPictureSelector
 
         private void listBox1_DragEnter(object sender, DragEventArgs e)
         {
-            // Check if the data being dragged is a file
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
-                e.Effect = DragDropEffects.Copy; // Allow copying
+                e.Effect = DragDropEffects.Copy;
             }
             else
             {
-                e.Effect = DragDropEffects.None; // Disallow if not files
+                e.Effect = DragDropEffects.None;
             }
         }
 
@@ -193,7 +178,6 @@ namespace RandomPictureSelector
 
             foreach (string file in files)
             {
-                // Check if the file is an image
                 if (file.EndsWith(".jpg") || file.EndsWith(".jpeg") || file.EndsWith(".png") || file.EndsWith(".bmp"))
                 {
                     if (!imagePaths.Contains(file))
@@ -223,14 +207,12 @@ namespace RandomPictureSelector
                 {
                     using (StreamWriter writer = new StreamWriter(saveFileDialog.FileName))
                     {
-                        // Save listBox1 (Insert Images)
                         writer.WriteLine("[Insert Images]");
                         foreach (string path in imagePaths)
                         {
                             writer.WriteLine(path);
                         }
 
-                        // Save listBox2 (Used Images)
                         writer.WriteLine("[Used Images]");
                         foreach (string path in usedImagePaths)
                         {
@@ -313,18 +295,14 @@ namespace RandomPictureSelector
                 return;
             }
 
-            // Display the next image in the shuffle
             pictureBox1.Image = FixImageOrientation(LoadImageSafely(imagePaths[shuffleIndex]));
 
-            // Cycle through the images
             shuffleIndex = (shuffleIndex + 1) % imagePaths.Count;
 
-            // Increment shuffle counter and update progress bar
             shuffleCount++;
             shuffleProgressBar.Value = Math.Min(shuffleCount, maxShuffleCount);
             lblShuffleStatus.Text = $"Shuffling... {shuffleCount}/{maxShuffleCount}";
 
-            // Stop after reaching the maximum shuffle count
             if (shuffleCount >= maxShuffleCount)
             {
                 shuffleTimer.Stop();
@@ -335,14 +313,6 @@ namespace RandomPictureSelector
             }
         }
 
-
-
-
-
-
-
-
-
         private void SelectFinalRandomImage()
         {
             if (imagePaths.Count == 0)
@@ -351,14 +321,11 @@ namespace RandomPictureSelector
                 return;
             }
 
-            // Select a random image
             int randomIndex = random.Next(imagePaths.Count);
             string selectedImage = imagePaths[randomIndex];
 
-            // Display the selected image in the PictureBox, fixing its orientation
             pictureBox1.Image = FixImageOrientation(Image.FromFile(selectedImage));
 
-            // Move the selected image to "Used Images"
             usedImagePaths.Add(selectedImage);
             listBox2.Items.Add(System.IO.Path.GetFileName(selectedImage));
 
@@ -367,7 +334,6 @@ namespace RandomPictureSelector
 
             lblShuffleStatus.Text = "Final image selected!";
         }
-
 
         private Image LoadImageSafely(string filePath)
         {
@@ -386,14 +352,11 @@ namespace RandomPictureSelector
         {
             using (SettingsForm settingsForm = new SettingsForm())
             {
-                // Pass current values to the SettingsForm
                 settingsForm.MinShuffleCount = shuffleProgressBar.Minimum;
                 settingsForm.ShuffleSpeed = customShuffleSpeed;
 
-                // Show the SettingsForm
                 if (settingsForm.ShowDialog() == DialogResult.OK)
                 {
-                    // Retrieve updated settings with validation
                     if (settingsForm.MinShuffleCount >= 1 && settingsForm.ShuffleSpeed > 0)
                     {
                         shuffleProgressBar.Minimum = settingsForm.MinShuffleCount;
@@ -406,8 +369,6 @@ namespace RandomPictureSelector
                 }
             }
         }
-
-
 
         private void ResetProgressBar(int calculatedShuffleCount)
         {
@@ -425,24 +386,22 @@ namespace RandomPictureSelector
                 {
                     MinShuffleCount = shuffleProgressBar.Minimum,
                     ShuffleSpeed = customShuffleSpeed,
-                    SelectedTheme = currentTheme
+                    SelectedTheme = currentTheme,
+                    SelectedGradient = currentGradient.ToString()
                 };
 
                 string json = System.Text.Json.JsonSerializer.Serialize(settings, new System.Text.Json.JsonSerializerOptions
                 {
-                    WriteIndented = true // Make the JSON more readable
+                    WriteIndented = true
                 });
 
                 File.WriteAllText(SettingsFilePath, json);
-                Debug.WriteLine("Settings saved successfully.");
             }
             catch (Exception ex)
             {
                 Debug.WriteLine($"Failed to save settings: {ex.Message}");
             }
         }
-
-
 
         private void LoadSettings()
         {
@@ -458,14 +417,12 @@ namespace RandomPictureSelector
                         shuffleProgressBar.Minimum = settings.MinShuffleCount;
                         customShuffleSpeed = settings.ShuffleSpeed;
                         currentTheme = settings.SelectedTheme;
+                        currentGradient = Enum.TryParse(settings.SelectedGradient, out GradientType gradient)
+                            ? gradient
+                            : GradientType.LightBlueToDarkBlue;
+
                         ApplyTheme(currentTheme);
-                        // Optional: Add a log message instead of showing a popup
-                        Debug.WriteLine("Settings loaded successfully.");
                     }
-                }
-                else
-                {
-                    Debug.WriteLine("No settings file found. Default settings will be used.");
                 }
             }
             catch (Exception ex)
@@ -474,14 +431,10 @@ namespace RandomPictureSelector
             }
         }
 
-
-
         private void ApplyTheme(string theme)
         {
-            // Detach any previously attached Paint event for gradients
             this.Paint -= RandomForm_Paint;
 
-            // Initialize colors dynamically based on the theme
             Color backgroundColor;
             Color textColor;
             Color buttonBackgroundColor;
@@ -516,10 +469,9 @@ namespace RandomPictureSelector
                     break;
 
                 case "Gradient":
-                    // Attach Paint event for gradient background
                     this.Paint += RandomForm_Paint;
 
-                    backgroundColor = Color.Transparent; // Gradient is drawn in Paint event
+                    backgroundColor = Color.Transparent;
                     textColor = Color.White;
                     buttonBackgroundColor = Color.DarkGray;
                     buttonTextColor = Color.White;
@@ -542,11 +494,9 @@ namespace RandomPictureSelector
                     break;
             }
 
-            // Apply colors to the form
             this.BackColor = theme == "Gradient" ? Color.White : backgroundColor;
             this.ForeColor = textColor;
 
-            // Iterate through all controls and apply colors dynamically
             foreach (Control control in this.Controls)
             {
                 switch (control)
@@ -567,29 +517,28 @@ namespace RandomPictureSelector
                         break;
 
                     case Label label:
-                        label.ForeColor = textColor; // Apply text color to labels
+                        label.ForeColor = textColor;
                         break;
 
                     case ProgressBar progressBar:
-                        progressBar.BackColor = backgroundColor; // Match form background
-                        progressBar.ForeColor = textColor;       // Optional
+                        progressBar.BackColor = backgroundColor;
+                        progressBar.ForeColor = textColor; 
                         break;
 
                     default:
-                        // Apply default colors for other controls
                         control.BackColor = backgroundColor;
                         control.ForeColor = textColor;
                         break;
                 }
             }
 
-            // Save the applied theme to settings
             SaveSettings();
+
+ 
+            this.Invalidate();
         }
 
 
-
-        // Paint event for the gradient background
         private void RandomForm_Paint(object sender, PaintEventArgs e)
         {
             System.Drawing.Drawing2D.LinearGradientBrush gradientBrush;
@@ -627,7 +576,6 @@ namespace RandomPictureSelector
         }
 
 
-
         public enum GradientType
         {
             LightBlueToDarkBlue,
@@ -637,9 +585,9 @@ namespace RandomPictureSelector
 
         private void ChangeTheme(string theme)
         {
-            currentTheme = theme; // Update the current theme
-            ApplyTheme(theme); // Apply the selected theme
-            SaveSettings(); // Save the selected theme in settings
+            currentTheme = theme; 
+            ApplyTheme(theme);
+            SaveSettings();
         }
 
         private void saveSettiToolStripMenuItem_Click(object sender, EventArgs e)
@@ -694,5 +642,6 @@ namespace RandomPictureSelector
             currentGradient = GradientType.BlueToPurple;
             ApplyTheme("Gradient");
         }
+
     }
 }

@@ -11,6 +11,7 @@ namespace RandomPictureSelector
         public int MinShuffleCount { get; set; } = 20;
         public int ShuffleSpeed { get; set; } = 100;
 
-        public string SelectedTheme { get; set; } = "Light";
+        public string SelectedTheme { get; set; } = "DesignView";
+        public string SelectedGradient { get; set; }
     }
 }

@@ -56,11 +56,11 @@
             lightToolStripMenuItem = new ToolStripMenuItem();
             darkToolStripMenuItem = new ToolStripMenuItem();
             gradientToolStripMenuItem = new ToolStripMenuItem();
-            defaultToolStripMenuItem = new ToolStripMenuItem();
-            shuffleTimer = new System.Windows.Forms.Timer(components);
             blueToolStripMenuItem = new ToolStripMenuItem();
             orangeToolStripMenuItem = new ToolStripMenuItem();
             purpleToolStripMenuItem = new ToolStripMenuItem();
+            defaultToolStripMenuItem = new ToolStripMenuItem();
+            shuffleTimer = new System.Windows.Forms.Timer(components);
             MainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             statusStrip1.SuspendLayout();
@@ -155,7 +155,7 @@
             label2.Anchor = AnchorStyles.None;
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(810, 201);
+            label2.Location = new Point(810, 134);
             label2.Name = "label2";
             label2.Size = new Size(86, 17);
             label2.TabIndex = 8;
@@ -167,7 +167,7 @@
             btnAdd.BackColor = Color.DarkGray;
             btnAdd.FlatStyle = FlatStyle.Popup;
             btnAdd.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnAdd.Location = new Point(61, 236);
+            btnAdd.Location = new Point(61, 167);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(178, 34);
             btnAdd.TabIndex = 7;
@@ -181,7 +181,7 @@
             btnMove.BackColor = Color.DarkGray;
             btnMove.FlatStyle = FlatStyle.Popup;
             btnMove.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnMove.Location = new Point(765, 234);
+            btnMove.Location = new Point(765, 167);
             btnMove.Name = "btnMove";
             btnMove.Size = new Size(178, 34);
             btnMove.TabIndex = 6;
@@ -234,9 +234,9 @@
             listBox2.BackColor = Color.LemonChiffon;
             listBox2.FormattingEnabled = true;
             listBox2.ItemHeight = 15;
-            listBox2.Location = new Point(765, 283);
+            listBox2.Location = new Point(765, 216);
             listBox2.Name = "listBox2";
-            listBox2.Size = new Size(178, 259);
+            listBox2.Size = new Size(178, 319);
             listBox2.TabIndex = 2;
             // 
             // listBox1
@@ -246,9 +246,9 @@
             listBox1.BackColor = Color.LemonChiffon;
             listBox1.FormattingEnabled = true;
             listBox1.ItemHeight = 15;
-            listBox1.Location = new Point(61, 283);
+            listBox1.Location = new Point(61, 214);
             listBox1.Name = "listBox1";
-            listBox1.Size = new Size(178, 259);
+            listBox1.Size = new Size(178, 319);
             listBox1.TabIndex = 1;
             listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
             // 
@@ -348,13 +348,6 @@
             gradientToolStripMenuItem.Text = "Gradient";
             gradientToolStripMenuItem.Click += gradientToolStripMenuItem_Click;
             // 
-            // defaultToolStripMenuItem
-            // 
-            defaultToolStripMenuItem.Name = "defaultToolStripMenuItem";
-            defaultToolStripMenuItem.Size = new Size(180, 22);
-            defaultToolStripMenuItem.Text = "Default";
-            defaultToolStripMenuItem.Click += defaultToolStripMenuItem_Click;
-            // 
             // blueToolStripMenuItem
             // 
             blueToolStripMenuItem.Name = "blueToolStripMenuItem";
@@ -375,6 +368,13 @@
             purpleToolStripMenuItem.Size = new Size(180, 22);
             purpleToolStripMenuItem.Text = "Purple";
             purpleToolStripMenuItem.Click += purpleToolStripMenuItem_Click;
+            // 
+            // defaultToolStripMenuItem
+            // 
+            defaultToolStripMenuItem.Name = "defaultToolStripMenuItem";
+            defaultToolStripMenuItem.Size = new Size(180, 22);
+            defaultToolStripMenuItem.Text = "Default";
+            defaultToolStripMenuItem.Click += defaultToolStripMenuItem_Click;
             // 
             // RandomForm
             // 

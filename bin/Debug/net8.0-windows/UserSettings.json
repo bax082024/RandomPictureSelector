@@ -1,5 +1,6 @@
 {
   "MinShuffleCount": 0,
   "ShuffleSpeed": 100,
-  "SelectedTheme": "DesignView"
+  "SelectedTheme": "DesignView",
+  "SelectedGradient": "BlueToPurple"
 }
