@@ -9,7 +9,6 @@ namespace RandomPictureSelector
         // Shuffle
         private int shuffleIndex = 0; // Tracks the current image being shown
         private int shuffleCount = 0; // Counts how many times images have been shuffled
-        private const int MaxShuffleCount = 20;
         private int customShuffleSpeed = 100;// How many images to show during shuffle
 
 
@@ -53,14 +52,18 @@ namespace RandomPictureSelector
             shuffleIndex = 0;
             shuffleCount = 0;
 
-            lblShuffleStatus.Text = "Shuffling... 0/" + MaxShuffleCount;
+            
 
-
+            // Dynamically set MaxShuffleCount
+            int calculatedShuffleCount = Math.Max(20, imagePaths.Count); // Minimum 20 or the number of images
+            shuffleProgressBar.Maximum = calculatedShuffleCount;
 
             // Set up and show progress bar
             shuffleProgressBar.Value = 0; // Reset progress
-            shuffleProgressBar.Maximum = MaxShuffleCount; // Ensure it matches shuffle count
             shuffleProgressBar.Visible = true;
+
+            // Update the shuffle label
+            lblShuffleStatus.Text = $"Shuffling... 0/{calculatedShuffleCount}";
 
             // Show the first image immediately
             if (imagePaths.Count > 0)
@@ -295,17 +298,18 @@ namespace RandomPictureSelector
             // Cycle through the images
             shuffleIndex = (shuffleIndex + 1) % imagePaths.Count;
 
-            lblShuffleStatus.Text = $"Shuffling... {shuffleCount}/{MaxShuffleCount}";
-
+            lblShuffleStatus.Text = $"Shuffling... {shuffleCount}/{shuffleProgressBar.Maximum}";
+            ;
 
             // Increment progress bar faster to sync better
+            shuffleCount++;
             shuffleProgressBar.Value = Math.Min(shuffleProgressBar.Value + 2, shuffleProgressBar.Maximum);
 
-            // Increment shuffle count
-            shuffleCount++;
+
 
             // Stop after reaching the maximum shuffle count
-            if (shuffleCount >= MaxShuffleCount)
+            if (shuffleCount >= shuffleProgressBar.Maximum)
+
             {
                 shuffleTimer.Stop();
                 shuffleProgressBar.Value = shuffleProgressBar.Maximum; // Ensure it ends at 100%
