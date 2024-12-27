@@ -231,7 +231,7 @@
             btnSave.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSave.Location = new Point(61, 548);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(75, 27);
+            btnSave.Size = new Size(85, 27);
             btnSave.TabIndex = 11;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = false;
@@ -242,9 +242,9 @@
             btnLoad.BackColor = Color.LightGray;
             btnLoad.FlatStyle = FlatStyle.Popup;
             btnLoad.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnLoad.Location = new Point(164, 548);
+            btnLoad.Location = new Point(154, 548);
             btnLoad.Name = "btnLoad";
-            btnLoad.Size = new Size(75, 27);
+            btnLoad.Size = new Size(85, 27);
             btnLoad.TabIndex = 12;
             btnLoad.Text = "Load";
             btnLoad.UseVisualStyleBackColor = false;
