@@ -517,11 +517,26 @@ namespace RandomPictureSelector
         private void loadSettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             LoadSettings();
-        }       
+        }
 
         private void RandomForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             SaveSettings();
+        }
+
+        private void lightToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangeTheme("Light");
+        }
+
+        private void darkToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangeTheme("Dark");
+        }
+
+        private void gradientToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangeTheme("Gradient");
         }
     }
 }

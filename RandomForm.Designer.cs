@@ -52,8 +52,11 @@
             shuffleSettingsToolStripMenuItem = new ToolStripMenuItem();
             saveSettiToolStripMenuItem = new ToolStripMenuItem();
             loadSettingsToolStripMenuItem = new ToolStripMenuItem();
-            shuffleTimer = new System.Windows.Forms.Timer(components);
             themesToolStripMenuItem = new ToolStripMenuItem();
+            shuffleTimer = new System.Windows.Forms.Timer(components);
+            lightToolStripMenuItem = new ToolStripMenuItem();
+            darkToolStripMenuItem = new ToolStripMenuItem();
+            gradientToolStripMenuItem = new ToolStripMenuItem();
             MainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             statusStrip1.SuspendLayout();
@@ -291,29 +294,51 @@
             // shuffleSettingsToolStripMenuItem
             // 
             shuffleSettingsToolStripMenuItem.Name = "shuffleSettingsToolStripMenuItem";
-            shuffleSettingsToolStripMenuItem.Size = new Size(180, 22);
+            shuffleSettingsToolStripMenuItem.Size = new Size(156, 22);
             shuffleSettingsToolStripMenuItem.Text = "Shuffle Settings";
             shuffleSettingsToolStripMenuItem.Click += shuffleSettingsToolStripMenuItem_Click;
             // 
             // saveSettiToolStripMenuItem
             // 
             saveSettiToolStripMenuItem.Name = "saveSettiToolStripMenuItem";
-            saveSettiToolStripMenuItem.Size = new Size(180, 22);
+            saveSettiToolStripMenuItem.Size = new Size(156, 22);
             saveSettiToolStripMenuItem.Text = "Save Settings";
             saveSettiToolStripMenuItem.Click += saveSettiToolStripMenuItem_Click;
             // 
             // loadSettingsToolStripMenuItem
             // 
             loadSettingsToolStripMenuItem.Name = "loadSettingsToolStripMenuItem";
-            loadSettingsToolStripMenuItem.Size = new Size(180, 22);
+            loadSettingsToolStripMenuItem.Size = new Size(156, 22);
             loadSettingsToolStripMenuItem.Text = "Load Settings";
             loadSettingsToolStripMenuItem.Click += loadSettingsToolStripMenuItem_Click;
             // 
             // themesToolStripMenuItem
             // 
+            themesToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { lightToolStripMenuItem, darkToolStripMenuItem, gradientToolStripMenuItem });
             themesToolStripMenuItem.Name = "themesToolStripMenuItem";
             themesToolStripMenuItem.Size = new Size(60, 20);
             themesToolStripMenuItem.Text = "Themes";
+            // 
+            // lightToolStripMenuItem
+            // 
+            lightToolStripMenuItem.Name = "lightToolStripMenuItem";
+            lightToolStripMenuItem.Size = new Size(180, 22);
+            lightToolStripMenuItem.Text = "Light";
+            lightToolStripMenuItem.Click += lightToolStripMenuItem_Click;
+            // 
+            // darkToolStripMenuItem
+            // 
+            darkToolStripMenuItem.Name = "darkToolStripMenuItem";
+            darkToolStripMenuItem.Size = new Size(180, 22);
+            darkToolStripMenuItem.Text = "Dark";
+            darkToolStripMenuItem.Click += darkToolStripMenuItem_Click;
+            // 
+            // gradientToolStripMenuItem
+            // 
+            gradientToolStripMenuItem.Name = "gradientToolStripMenuItem";
+            gradientToolStripMenuItem.Size = new Size(180, 22);
+            gradientToolStripMenuItem.Text = "Gradient";
+            gradientToolStripMenuItem.Click += gradientToolStripMenuItem_Click;
             // 
             // RandomForm
             // 
@@ -364,5 +389,8 @@
         private ToolStripMenuItem saveSettiToolStripMenuItem;
         private ToolStripMenuItem loadSettingsToolStripMenuItem;
         private ToolStripMenuItem themesToolStripMenuItem;
+        private ToolStripMenuItem lightToolStripMenuItem;
+        private ToolStripMenuItem darkToolStripMenuItem;
+        private ToolStripMenuItem gradientToolStripMenuItem;
     }
 }
