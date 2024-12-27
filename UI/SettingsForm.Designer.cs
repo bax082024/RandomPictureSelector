@@ -28,18 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
+            panel1 = new Panel();
             SuspendLayout();
+            // 
+            // panel1
+            // 
+            panel1.Location = new Point(314, 217);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(200, 100);
+            panel1.TabIndex = 0;
             // 
             // SettingsForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ControlDark;
             ClientSize = new Size(800, 683);
+            Controls.Add(panel1);
+            Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Name = "SettingsForm";
-            Text = "SettingsForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Settings";
             ResumeLayout(false);
         }
 
         #endregion
+
+        private Panel panel1;
     }
 }
