@@ -71,5 +71,10 @@ namespace RandomPictureSelector
             usedImagePaths.Clear();
             listBox2.Items.Clear();
         }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
