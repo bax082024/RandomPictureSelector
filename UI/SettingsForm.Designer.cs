@@ -35,20 +35,23 @@
             btnSave = new Button();
             label5 = new Label();
             label4 = new Label();
-            label3 = new Label();
             label2 = new Label();
             label1 = new Label();
             numMinShuffleCount = new NumericUpDown();
             numShuffleSpeed = new NumericUpDown();
+            statusStrip1 = new StatusStrip();
+            toolStripStatusLabel1 = new ToolStripStatusLabel();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numMinShuffleCount).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numShuffleSpeed).BeginInit();
+            statusStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = Color.Transparent;
+            panel1.Controls.Add(statusStrip1);
             panel1.Controls.Add(panel2);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
@@ -65,7 +68,6 @@
             panel2.Controls.Add(btnSave);
             panel2.Controls.Add(label5);
             panel2.Controls.Add(label4);
-            panel2.Controls.Add(label3);
             panel2.Controls.Add(label2);
             panel2.Controls.Add(label1);
             panel2.Controls.Add(numMinShuffleCount);
@@ -90,9 +92,9 @@
             // 
             btnLoad.Anchor = AnchorStyles.None;
             btnLoad.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnLoad.Location = new Point(221, 314);
+            btnLoad.Location = new Point(231, 257);
             btnLoad.Name = "btnLoad";
-            btnLoad.Size = new Size(125, 33);
+            btnLoad.Size = new Size(98, 33);
             btnLoad.TabIndex = 9;
             btnLoad.Text = "Load";
             btnLoad.UseVisualStyleBackColor = true;
@@ -102,9 +104,9 @@
             // 
             btnSave.Anchor = AnchorStyles.None;
             btnSave.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnSave.Location = new Point(221, 266);
+            btnSave.Location = new Point(231, 218);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(125, 33);
+            btnSave.Size = new Size(98, 33);
             btnSave.TabIndex = 8;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = true;
@@ -131,17 +133,6 @@
             label4.Size = new Size(90, 15);
             label4.TabIndex = 5;
             label4.Text = "Shuffle Count :";
-            // 
-            // label3
-            // 
-            label3.Anchor = AnchorStyles.None;
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(176, 222);
-            label3.Name = "label3";
-            label3.Size = new Size(200, 21);
-            label3.TabIndex = 4;
-            label3.Text = "Save And Load Functions";
             // 
             // label2
             // 
@@ -188,11 +179,26 @@
             numShuffleSpeed.TabIndex = 1;
             numShuffleSpeed.Value = new decimal(new int[] { 100, 0, 0, 0 });
             // 
+            // statusStrip1
+            // 
+            statusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1 });
+            statusStrip1.Location = new Point(0, 661);
+            statusStrip1.Name = "statusStrip1";
+            statusStrip1.Size = new Size(800, 22);
+            statusStrip1.TabIndex = 4;
+            statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            toolStripStatusLabel1.Size = new Size(74, 17);
+            toolStripStatusLabel1.Text = "Bax Creation";
+            // 
             // SettingsForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.ControlDark;
+            BackColor = Color.Silver;
             ClientSize = new Size(800, 683);
             Controls.Add(panel1);
             Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -200,10 +206,13 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Settings";
             panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numMinShuffleCount).EndInit();
             ((System.ComponentModel.ISupportInitialize)numShuffleSpeed).EndInit();
+            statusStrip1.ResumeLayout(false);
+            statusStrip1.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -217,9 +226,10 @@
         private Label label2;
         private Label label5;
         private Label label4;
-        private Label label3;
         private Button btnLoad;
         private Button btnSave;
         private Button btnCancel;
+        private StatusStrip statusStrip1;
+        private ToolStripStatusLabel toolStripStatusLabel1;
     }
 }
