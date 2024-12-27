@@ -19,6 +19,7 @@ namespace RandomPictureSelector
         {
             InitializeComponent();
             shuffleTimer.Tick += shuffleTimer_Tick;
+
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -310,7 +311,7 @@ namespace RandomPictureSelector
             if (shuffleCount >= shuffleProgressBar.Maximum)
             {
                 shuffleTimer.Stop();
-                shuffleProgressBar.Value = shuffleProgressBar.Maximum; // Ensure it ends at 100%
+                shuffleProgressBar.Value = shuffleProgressBar.Maximum; 
                 shuffleProgressBar.Visible = false;
                 lblShuffleStatus.Text = "Shuffle complete!";
                 SelectFinalRandomImage();
