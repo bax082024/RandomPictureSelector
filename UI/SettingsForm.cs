@@ -19,19 +19,20 @@ namespace RandomPictureSelector.UI
             get { return (int)numMinShuffleCount.Value; }
             set
             {
-                if (value < numMinShuffleCount.Minimum || value > numMinShuffleCount.Maximum)
-                    throw new ArgumentOutOfRangeException("MinShuffleCount", "Value must be within the allowed range.");
+                // Ensure the value is within the allowed range
+                value = Math.Clamp(value, (int)numMinShuffleCount.Minimum, (int)numMinShuffleCount.Maximum);
                 numMinShuffleCount.Value = value;
             }
         }
+
 
         public int ShuffleSpeed
         {
             get { return (int)numShuffleSpeed.Value; }
             set
             {
-                if (value < numShuffleSpeed.Minimum || value > numShuffleSpeed.Maximum)
-                    throw new ArgumentOutOfRangeException("ShuffleSpeed", "Value must be within the allowed range.");
+                // Ensure the value is within the allowed range
+                value = Math.Clamp(value, (int)numShuffleSpeed.Minimum, (int)numShuffleSpeed.Maximum);
                 numShuffleSpeed.Value = value;
             }
         }

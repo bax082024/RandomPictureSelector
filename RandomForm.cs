@@ -55,14 +55,13 @@ namespace RandomPictureSelector
             shuffleIndex = 0;
             shuffleCount = 0;
 
-
-
             // Dynamically set MaxShuffleCount
             int calculatedShuffleCount = Math.Max(20, imagePaths.Count); // Minimum 20 or the number of images
-            shuffleProgressBar.Maximum = calculatedShuffleCount;
+            shuffleProgressBar.Minimum = 0; // Ensure minimum is valid
+            shuffleProgressBar.Maximum = calculatedShuffleCount; // Set the maximum dynamically
 
-            // Set up and show progress bar
-            shuffleProgressBar.Value = 0; // Reset progress
+            // Reset progress bar
+            shuffleProgressBar.Value = 0; // Reset progress value within bounds
             shuffleProgressBar.Visible = true;
 
             // Update the shuffle label
@@ -75,12 +74,11 @@ namespace RandomPictureSelector
                 shuffleProgressBar.Value = 1; // Start progress bar at 1
             }
 
-
-
             // Start the shuffle timer
             shuffleTimer.Interval = customShuffleSpeed;
             shuffleTimer.Start();
         }
+
 
         private void btnMove_Click(object sender, EventArgs e)
         {
@@ -364,11 +362,19 @@ namespace RandomPictureSelector
                 // Show the SettingsForm
                 if (settingsForm.ShowDialog() == DialogResult.OK)
                 {
-                    // Retrieve updated settings
-                    shuffleProgressBar.Minimum = settingsForm.MinShuffleCount;
-                    customShuffleSpeed = settingsForm.ShuffleSpeed;
+                    // Retrieve updated settings with validation
+                    if (settingsForm.MinShuffleCount >= 1 && settingsForm.ShuffleSpeed > 0)
+                    {
+                        shuffleProgressBar.Minimum = settingsForm.MinShuffleCount;
+                        customShuffleSpeed = settingsForm.ShuffleSpeed;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid settings. Please ensure values are correct.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }
+
     }
 }
