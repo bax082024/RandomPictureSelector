@@ -49,25 +49,15 @@
             fileToolStripMenuItem = new ToolStripMenuItem();
             exitToolStripMenuItem = new ToolStripMenuItem();
             shuffleTimer = new System.Windows.Forms.Timer(components);
-            numMinShuffleCount = new NumericUpDown();
-            numShuffleSpeed = new NumericUpDown();
-            lblSpeed = new Label();
-            lblShufflecount = new Label();
             MainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             statusStrip1.SuspendLayout();
             menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numMinShuffleCount).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numShuffleSpeed).BeginInit();
             SuspendLayout();
             // 
             // MainPanel
             // 
             MainPanel.BackColor = Color.Transparent;
-            MainPanel.Controls.Add(lblShufflecount);
-            MainPanel.Controls.Add(lblSpeed);
-            MainPanel.Controls.Add(numShuffleSpeed);
-            MainPanel.Controls.Add(numMinShuffleCount);
             MainPanel.Controls.Add(lblShuffleStatus);
             MainPanel.Controls.Add(shuffleProgressBar);
             MainPanel.Controls.Add(btnLoad);
@@ -286,44 +276,6 @@
             exitToolStripMenuItem.Text = "Exit";
             exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
             // 
-            // numMinShuffleCount
-            // 
-            numMinShuffleCount.Location = new Point(640, 138);
-            numMinShuffleCount.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
-            numMinShuffleCount.Name = "numMinShuffleCount";
-            numMinShuffleCount.Size = new Size(50, 23);
-            numMinShuffleCount.TabIndex = 15;
-            numMinShuffleCount.Value = new decimal(new int[] { 20, 0, 0, 0 });
-            // 
-            // numShuffleSpeed
-            // 
-            numShuffleSpeed.Increment = new decimal(new int[] { 10, 0, 0, 0 });
-            numShuffleSpeed.Location = new Point(584, 138);
-            numShuffleSpeed.Maximum = new decimal(new int[] { 500, 0, 0, 0 });
-            numShuffleSpeed.Minimum = new decimal(new int[] { 10, 0, 0, 0 });
-            numShuffleSpeed.Name = "numShuffleSpeed";
-            numShuffleSpeed.Size = new Size(50, 23);
-            numShuffleSpeed.TabIndex = 16;
-            numShuffleSpeed.Value = new decimal(new int[] { 100, 0, 0, 0 });
-            // 
-            // lblSpeed
-            // 
-            lblSpeed.AutoSize = true;
-            lblSpeed.Location = new Point(584, 120);
-            lblSpeed.Name = "lblSpeed";
-            lblSpeed.Size = new Size(42, 15);
-            lblSpeed.TabIndex = 17;
-            lblSpeed.Text = "Speed";
-            // 
-            // lblShufflecount
-            // 
-            lblShufflecount.AutoSize = true;
-            lblShufflecount.Location = new Point(640, 120);
-            lblShufflecount.Name = "lblShufflecount";
-            lblShufflecount.Size = new Size(40, 15);
-            lblShufflecount.TabIndex = 18;
-            lblShufflecount.Text = "Count";
-            // 
             // RandomForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -343,8 +295,6 @@
             statusStrip1.PerformLayout();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numMinShuffleCount).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numShuffleSpeed).EndInit();
             ResumeLayout(false);
         }
 
@@ -370,9 +320,5 @@
         private System.Windows.Forms.Timer shuffleTimer;
         private ProgressBar shuffleProgressBar;
         private Label lblShuffleStatus;
-        private NumericUpDown numMinShuffleCount;
-        private NumericUpDown numShuffleSpeed;
-        private Label lblShufflecount;
-        private Label lblSpeed;
     }
 }
