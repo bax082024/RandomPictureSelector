@@ -138,7 +138,8 @@
             btnMove.Name = "btnMove";
             btnMove.Size = new Size(178, 34);
             btnMove.TabIndex = 6;
-            btnMove.Text = "Move ";
+            btnMove.Text = "<<<      Move ";
+            btnMove.TextAlign = ContentAlignment.MiddleLeft;
             btnMove.UseVisualStyleBackColor = false;
             // 
             // button1
