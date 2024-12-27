@@ -47,3 +47,12 @@ and allows users to manage their image lists with save and load functionality.
    - Go to the `Themes` menu and select your preferred theme or gradient.
 
 ---
+
+## Screenshots
+### Light Theme
+![Light Theme](Images/light.png)
+![Dark Theme](Images/dark.png )
+![ ]( )
+![ ]( )
+![ ]( )
+![ ]( )
