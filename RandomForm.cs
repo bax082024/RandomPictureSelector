@@ -458,6 +458,12 @@ namespace RandomPictureSelector
             }
         }
 
+        private void ApplyTheme(string theme)
+        {
+            switch (theme) 
+
+        }
+
         private void saveSettiToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SaveSettings();
