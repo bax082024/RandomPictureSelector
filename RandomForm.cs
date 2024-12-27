@@ -428,6 +428,35 @@ namespace RandomPictureSelector
             }
         }
 
+        private void LoadSettings()
+        {
+            try
+            {
+                if (File.Exists(SettingsFilePath))
+                {
+                    string json = File.ReadAllText(SettingsFilePath);
+                    var settings = System.Text.Json.JsonSerializer.Deserialize<UserSettings>(json);
+
+                    if (settings != null)
+                    {
+                        shuffleProgressBar.Minimum = settings.MinShuffleCount;
+                        customShuffleSpeed = settings.ShuffleSpeed;
+
+                        MessageBox.Show("Settings loaded successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No settings file found. Default settings will be used.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Failed to load settings: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
 
 
     }
