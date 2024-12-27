@@ -64,4 +64,13 @@ and allows users to manage their image lists with save and load functionality.
 
 ---
 
+## Installation 
+
+1. **Clone repository:**
+    - **https://github.com/bax082024/RandomPictureSelector.git**
+2. Open the file RandomPictureSelector.sln in Visual Studio.
+3. Rebuild project.
+
+---
+
 
