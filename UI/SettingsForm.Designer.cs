@@ -33,9 +33,11 @@
             // 
             // panel1
             // 
-            panel1.Location = new Point(314, 217);
+            panel1.BackColor = Color.Transparent;
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(200, 100);
+            panel1.Size = new Size(800, 683);
             panel1.TabIndex = 0;
             // 
             // SettingsForm
