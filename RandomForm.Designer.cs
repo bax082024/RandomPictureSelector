@@ -33,13 +33,16 @@
             toolStripStatusLabel1 = new ToolStripStatusLabel();
             listBox1 = new ListBox();
             listBox2 = new ListBox();
+            pictureBox1 = new PictureBox();
             MainPanel.SuspendLayout();
             statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // MainPanel
             // 
             MainPanel.BackColor = Color.Transparent;
+            MainPanel.Controls.Add(pictureBox1);
             MainPanel.Controls.Add(listBox2);
             MainPanel.Controls.Add(listBox1);
             MainPanel.Controls.Add(statusStrip1);
@@ -68,7 +71,7 @@
             // 
             listBox1.FormattingEnabled = true;
             listBox1.ItemHeight = 15;
-            listBox1.Location = new Point(61, 55);
+            listBox1.Location = new Point(60, 218);
             listBox1.Name = "listBox1";
             listBox1.Size = new Size(178, 259);
             listBox1.TabIndex = 1;
@@ -77,10 +80,19 @@
             // 
             listBox2.FormattingEnabled = true;
             listBox2.ItemHeight = 15;
-            listBox2.Location = new Point(61, 353);
+            listBox2.Location = new Point(768, 218);
             listBox2.Name = "listBox2";
             listBox2.Size = new Size(178, 259);
             listBox2.TabIndex = 2;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BorderStyle = BorderStyle.Fixed3D;
+            pictureBox1.Location = new Point(303, 77);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(400, 400);
+            pictureBox1.TabIndex = 3;
+            pictureBox1.TabStop = false;
             // 
             // RandomForm
             // 
@@ -96,6 +108,7 @@
             MainPanel.PerformLayout();
             statusStrip1.ResumeLayout(false);
             statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -106,5 +119,6 @@
         private ToolStripStatusLabel toolStripStatusLabel1;
         private ListBox listBox2;
         private ListBox listBox1;
+        private PictureBox pictureBox1;
     }
 }
