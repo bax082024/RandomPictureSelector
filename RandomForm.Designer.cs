@@ -36,6 +36,7 @@
             pictureBox1 = new PictureBox();
             label1 = new Label();
             btnRandom = new Button();
+            btnMove = new Button();
             MainPanel.SuspendLayout();
             statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -44,6 +45,7 @@
             // MainPanel
             // 
             MainPanel.BackColor = Color.Transparent;
+            MainPanel.Controls.Add(btnMove);
             MainPanel.Controls.Add(btnRandom);
             MainPanel.Controls.Add(label1);
             MainPanel.Controls.Add(pictureBox1);
@@ -121,6 +123,16 @@
             btnRandom.Text = "START";
             btnRandom.UseVisualStyleBackColor = true;
             // 
+            // btnMove
+            // 
+            btnMove.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnMove.Location = new Point(804, 234);
+            btnMove.Name = "btnMove";
+            btnMove.Size = new Size(98, 34);
+            btnMove.TabIndex = 6;
+            btnMove.Text = "Move ";
+            btnMove.UseVisualStyleBackColor = true;
+            // 
             // RandomForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -149,5 +161,6 @@
         private PictureBox pictureBox1;
         private Label label1;
         private Button btnRandom;
+        private Button btnMove;
     }
 }
