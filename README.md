@@ -73,4 +73,12 @@ and allows users to manage their image lists with save and load functionality.
 
 ---
 
+## Contact
+
+For questions or feedback, please contact:
+
+- **bax082024@gmail.com**
+
+---
+
 
