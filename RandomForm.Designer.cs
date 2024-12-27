@@ -149,7 +149,7 @@
             // pictureBox1
             // 
             pictureBox1.Anchor = AnchorStyles.None;
-            pictureBox1.BackColor = SystemColors.InactiveCaption;
+            pictureBox1.BackColor = Color.Black;
             pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox1.BorderStyle = BorderStyle.Fixed3D;
             pictureBox1.Location = new Point(301, 142);
