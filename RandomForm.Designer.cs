@@ -34,6 +34,7 @@
             listBox1 = new ListBox();
             listBox2 = new ListBox();
             pictureBox1 = new PictureBox();
+            label1 = new Label();
             MainPanel.SuspendLayout();
             statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -42,6 +43,7 @@
             // MainPanel
             // 
             MainPanel.BackColor = Color.Transparent;
+            MainPanel.Controls.Add(label1);
             MainPanel.Controls.Add(pictureBox1);
             MainPanel.Controls.Add(listBox2);
             MainPanel.Controls.Add(listBox1);
@@ -97,6 +99,16 @@
             pictureBox1.TabIndex = 3;
             pictureBox1.TabStop = false;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(278, 20);
+            label1.Name = "label1";
+            label1.Size = new Size(453, 50);
+            label1.TabIndex = 4;
+            label1.Text = "Random Picture Chooser";
+            // 
             // RandomForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -123,5 +135,6 @@
         private ListBox listBox2;
         private ListBox listBox1;
         private PictureBox pictureBox1;
+        private Label label1;
     }
 }
