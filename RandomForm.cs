@@ -183,7 +183,27 @@ namespace RandomPictureSelector
 
         private void btnLoad_Click(object sender, EventArgs e)
         {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "Text Files|*.txt";
+                openFileDialog.Title = "Load Image List";
 
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string[] loadedPaths = System.IO.File.ReadAllLines(openFileDialog.FileName);
+
+                    foreach (string path in loadedPaths)
+                    {
+                        if (!imagePaths.Contains(path) && System.IO.File.Exists(path))
+                        {
+                            imagePaths.Add(path);
+                            listBox1.Items.Add(System.IO.Path.GetFileName(path));
+                        }
+                    }
+
+                    MessageBox.Show("Image list loaded successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
         }
     }
 }
