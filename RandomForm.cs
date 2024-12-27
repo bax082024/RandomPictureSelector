@@ -166,5 +166,24 @@ namespace RandomPictureSelector
             }
         }
 
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.Filter = "Text Files|*.txt";
+                saveFileDialog.Title = "Save Image List";
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    System.IO.File.WriteAllLines(saveFileDialog.FileName, imagePaths);
+                    MessageBox.Show("Image list saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        private void btnLoad_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

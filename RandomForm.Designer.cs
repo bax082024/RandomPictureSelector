@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             MainPanel = new Panel();
+            btnLoad = new Button();
+            btnSave = new Button();
             btnExit = new Button();
             label2 = new Label();
             btnAdd = new Button();
@@ -43,8 +45,6 @@
             menuStrip1 = new MenuStrip();
             fileToolStripMenuItem = new ToolStripMenuItem();
             exitToolStripMenuItem = new ToolStripMenuItem();
-            btnSave = new Button();
-            btnLoad = new Button();
             MainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             statusStrip1.SuspendLayout();
@@ -72,6 +72,34 @@
             MainPanel.Name = "MainPanel";
             MainPanel.Size = new Size(1009, 669);
             MainPanel.TabIndex = 0;
+            // 
+            // btnLoad
+            // 
+            btnLoad.Anchor = AnchorStyles.None;
+            btnLoad.BackColor = Color.LightGray;
+            btnLoad.FlatStyle = FlatStyle.Popup;
+            btnLoad.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnLoad.Location = new Point(154, 548);
+            btnLoad.Name = "btnLoad";
+            btnLoad.Size = new Size(85, 27);
+            btnLoad.TabIndex = 12;
+            btnLoad.Text = "Load";
+            btnLoad.UseVisualStyleBackColor = false;
+            btnLoad.Click += btnLoad_Click;
+            // 
+            // btnSave
+            // 
+            btnSave.Anchor = AnchorStyles.None;
+            btnSave.BackColor = Color.LightGray;
+            btnSave.FlatStyle = FlatStyle.Popup;
+            btnSave.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSave.Location = new Point(61, 548);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(85, 27);
+            btnSave.TabIndex = 11;
+            btnSave.Text = "Save";
+            btnSave.UseVisualStyleBackColor = false;
+            btnSave.Click += btnSave_Click;
             // 
             // btnExit
             // 
@@ -223,32 +251,6 @@
             exitToolStripMenuItem.Size = new Size(93, 22);
             exitToolStripMenuItem.Text = "Exit";
             exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
-            // 
-            // btnSave
-            // 
-            btnSave.Anchor = AnchorStyles.None;
-            btnSave.BackColor = Color.LightGray;
-            btnSave.FlatStyle = FlatStyle.Popup;
-            btnSave.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnSave.Location = new Point(61, 548);
-            btnSave.Name = "btnSave";
-            btnSave.Size = new Size(85, 27);
-            btnSave.TabIndex = 11;
-            btnSave.Text = "Save";
-            btnSave.UseVisualStyleBackColor = false;
-            // 
-            // btnLoad
-            // 
-            btnLoad.Anchor = AnchorStyles.None;
-            btnLoad.BackColor = Color.LightGray;
-            btnLoad.FlatStyle = FlatStyle.Popup;
-            btnLoad.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnLoad.Location = new Point(154, 548);
-            btnLoad.Name = "btnLoad";
-            btnLoad.Size = new Size(85, 27);
-            btnLoad.TabIndex = 12;
-            btnLoad.Text = "Load";
-            btnLoad.UseVisualStyleBackColor = false;
             // 
             // RandomForm
             // 
