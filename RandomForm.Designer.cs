@@ -31,6 +31,8 @@
             MainPanel = new Panel();
             statusStrip1 = new StatusStrip();
             toolStripStatusLabel1 = new ToolStripStatusLabel();
+            listBox1 = new ListBox();
+            listBox2 = new ListBox();
             MainPanel.SuspendLayout();
             statusStrip1.SuspendLayout();
             SuspendLayout();
@@ -38,6 +40,8 @@
             // MainPanel
             // 
             MainPanel.BackColor = Color.Transparent;
+            MainPanel.Controls.Add(listBox2);
+            MainPanel.Controls.Add(listBox1);
             MainPanel.Controls.Add(statusStrip1);
             MainPanel.Dock = DockStyle.Fill;
             MainPanel.Location = new Point(0, 0);
@@ -59,6 +63,24 @@
             toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             toolStripStatusLabel1.Size = new Size(74, 17);
             toolStripStatusLabel1.Text = "Bax Creation";
+            // 
+            // listBox1
+            // 
+            listBox1.FormattingEnabled = true;
+            listBox1.ItemHeight = 15;
+            listBox1.Location = new Point(61, 55);
+            listBox1.Name = "listBox1";
+            listBox1.Size = new Size(178, 259);
+            listBox1.TabIndex = 1;
+            // 
+            // listBox2
+            // 
+            listBox2.FormattingEnabled = true;
+            listBox2.ItemHeight = 15;
+            listBox2.Location = new Point(61, 353);
+            listBox2.Name = "listBox2";
+            listBox2.Size = new Size(178, 259);
+            listBox2.TabIndex = 2;
             // 
             // RandomForm
             // 
@@ -82,5 +104,7 @@
         private Panel MainPanel;
         private StatusStrip statusStrip1;
         private ToolStripStatusLabel toolStripStatusLabel1;
+        private ListBox listBox2;
+        private ListBox listBox1;
     }
 }
