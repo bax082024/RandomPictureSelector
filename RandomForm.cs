@@ -26,6 +26,7 @@ namespace RandomPictureSelector
             shuffleTimer.Tick += shuffleTimer_Tick;
 
             SaveSettings();
+            ApplyTheme(currentTheme);
 
         }
 
@@ -500,6 +501,12 @@ namespace RandomPictureSelector
                     break;
             }
         }
+
+        private void ChangeTheme(string theme)
+        {
+            currentTheme = theme; // Update the current theme
+            ApplyTheme(theme); // Apply the selected theme
+            SaveSettings(); // Save the selected theme in settings
         }
 
         private void saveSettiToolStripMenuItem_Click(object sender, EventArgs e)
