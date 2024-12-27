@@ -37,9 +37,9 @@
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
-            label6 = new Label();
             btnSave = new Button();
             btnLoad = new Button();
+            btnCancel = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numMinShuffleCount).BeginInit();
@@ -60,9 +60,9 @@
             // 
             panel2.Anchor = AnchorStyles.None;
             panel2.BackColor = Color.Gray;
+            panel2.Controls.Add(btnCancel);
             panel2.Controls.Add(btnLoad);
             panel2.Controls.Add(btnSave);
-            panel2.Controls.Add(label6);
             panel2.Controls.Add(label5);
             panel2.Controls.Add(label4);
             panel2.Controls.Add(label3);
@@ -80,7 +80,7 @@
             label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 26.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(200, 9);
+            label1.Location = new Point(206, 0);
             label1.Name = "label1";
             label1.Size = new Size(155, 47);
             label1.TabIndex = 2;
@@ -90,7 +90,7 @@
             // 
             numMinShuffleCount.Anchor = AnchorStyles.None;
             numMinShuffleCount.BackColor = SystemColors.Info;
-            numMinShuffleCount.Location = new Point(258, 148);
+            numMinShuffleCount.Location = new Point(286, 128);
             numMinShuffleCount.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             numMinShuffleCount.Name = "numMinShuffleCount";
             numMinShuffleCount.Size = new Size(120, 23);
@@ -101,7 +101,7 @@
             // 
             numShuffleSpeed.Anchor = AnchorStyles.None;
             numShuffleSpeed.BackColor = SystemColors.Info;
-            numShuffleSpeed.Location = new Point(258, 197);
+            numShuffleSpeed.Location = new Point(286, 177);
             numShuffleSpeed.Maximum = new decimal(new int[] { 500, 0, 0, 0 });
             numShuffleSpeed.Minimum = new decimal(new int[] { 10, 0, 0, 0 });
             numShuffleSpeed.Name = "numShuffleSpeed";
@@ -114,7 +114,7 @@
             label2.Anchor = AnchorStyles.None;
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(210, 101);
+            label2.Location = new Point(215, 85);
             label2.Name = "label2";
             label2.Size = new Size(131, 21);
             label2.TabIndex = 3;
@@ -125,7 +125,7 @@
             label3.Anchor = AnchorStyles.None;
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(178, 254);
+            label3.Location = new Point(176, 222);
             label3.Name = "label3";
             label3.Size = new Size(200, 21);
             label3.TabIndex = 4;
@@ -136,7 +136,7 @@
             label4.Anchor = AnchorStyles.None;
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label4.Location = new Point(151, 154);
+            label4.Location = new Point(179, 134);
             label4.Name = "label4";
             label4.Size = new Size(90, 15);
             label4.TabIndex = 5;
@@ -147,28 +147,17 @@
             label5.Anchor = AnchorStyles.None;
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label5.Location = new Point(143, 203);
+            label5.Location = new Point(171, 183);
             label5.Name = "label5";
             label5.Size = new Size(99, 15);
             label5.TabIndex = 6;
             label5.Text = "Shouffle Speed :";
             // 
-            // label6
-            // 
-            label6.Anchor = AnchorStyles.None;
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.Location = new Point(85, 458);
-            label6.Name = "label6";
-            label6.Size = new Size(58, 17);
-            label6.TabIndex = 7;
-            label6.Text = "Settings";
-            // 
             // btnSave
             // 
             btnSave.Anchor = AnchorStyles.None;
             btnSave.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnSave.Location = new Point(210, 290);
+            btnSave.Location = new Point(221, 266);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(125, 33);
             btnSave.TabIndex = 8;
@@ -179,12 +168,23 @@
             // 
             btnLoad.Anchor = AnchorStyles.None;
             btnLoad.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnLoad.Location = new Point(210, 338);
+            btnLoad.Location = new Point(221, 314);
             btnLoad.Name = "btnLoad";
             btnLoad.Size = new Size(125, 33);
             btnLoad.TabIndex = 9;
             btnLoad.Text = "Load";
             btnLoad.UseVisualStyleBackColor = true;
+            // 
+            // btnCancel
+            // 
+            btnCancel.Anchor = AnchorStyles.None;
+            btnCancel.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnCancel.Location = new Point(193, 473);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(185, 53);
+            btnCancel.TabIndex = 10;
+            btnCancel.Text = "Cancel";
+            btnCancel.UseVisualStyleBackColor = true;
             // 
             // SettingsForm
             // 
@@ -216,8 +216,8 @@
         private Label label5;
         private Label label4;
         private Label label3;
-        private Label label6;
         private Button btnLoad;
         private Button btnSave;
+        private Button btnCancel;
     }
 }
