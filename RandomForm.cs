@@ -54,9 +54,13 @@ namespace RandomPictureSelector
             shuffleCount = 0;
 
 
-            shuffleProgressBar.Value = 0;
-            shuffleProgressBar.Maximum = MaxShuffleCount;
+            // Set up and show progress bar
+            shuffleProgressBar.Value = 0; // Reset progress
+            shuffleProgressBar.Maximum = MaxShuffleCount; // Ensure it matches shuffle count
             shuffleProgressBar.Visible = true;
+
+            // Start progress bar update immediately
+            shuffleProgressBar.Value = 1; // Initialize at 1 for better visual sync
 
             // Start the shuffle timer
             shuffleTimer.Interval = customShuffleSpeed;
