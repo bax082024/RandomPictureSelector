@@ -9,7 +9,6 @@ namespace RandomPictureSelector
         // Shuffle
         private int shuffleIndex = 0; // Tracks the current image being shown
         private int shuffleCount = 0; // Counts how many times images have been shuffled
-        private const int MaxShuffleCount = 20;
         private int customShuffleSpeed = 100;// How many images to show during shuffle
 
 
@@ -65,7 +64,6 @@ namespace RandomPictureSelector
 
             // Update the shuffle label
             lblShuffleStatus.Text = $"Shuffling... 0/{calculatedShuffleCount}";
-
 
             // Show the first image immediately
             if (imagePaths.Count > 0)
@@ -307,10 +305,11 @@ namespace RandomPictureSelector
             shuffleCount++;
             shuffleProgressBar.Value = Math.Min(shuffleProgressBar.Value + 2, shuffleProgressBar.Maximum);
 
-            
+
 
             // Stop after reaching the maximum shuffle count
-            if (shuffleCount >= MaxShuffleCount)
+            if (shuffleCount >= shuffleProgressBar.Maximum)
+
             {
                 shuffleTimer.Stop();
                 shuffleProgressBar.Value = shuffleProgressBar.Maximum; // Ensure it ends at 100%
