@@ -53,14 +53,18 @@ namespace RandomPictureSelector
             shuffleIndex = 0;
             shuffleCount = 0;
 
-            lblShuffleStatus.Text = "Shuffling... 0/" + MaxShuffleCount;
+            
 
-
+            // Dynamically set MaxShuffleCount
+            int calculatedShuffleCount = Math.Max(20, imagePaths.Count); // Minimum 20 or the number of images
+            shuffleProgressBar.Maximum = calculatedShuffleCount;
 
             // Set up and show progress bar
             shuffleProgressBar.Value = 0; // Reset progress
-            shuffleProgressBar.Maximum = MaxShuffleCount; // Ensure it matches shuffle count
             shuffleProgressBar.Visible = true;
+
+            // Update the shuffle label
+            lblShuffleStatus.Text = $"Shuffling... 0/{calculatedShuffleCount}";
 
             // Show the first image immediately
             if (imagePaths.Count > 0)
