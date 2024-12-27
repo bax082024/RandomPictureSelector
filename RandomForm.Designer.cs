@@ -37,6 +37,7 @@
             label1 = new Label();
             btnRandom = new Button();
             btnMove = new Button();
+            button1 = new Button();
             MainPanel.SuspendLayout();
             statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -45,6 +46,7 @@
             // MainPanel
             // 
             MainPanel.BackColor = Color.Transparent;
+            MainPanel.Controls.Add(button1);
             MainPanel.Controls.Add(btnMove);
             MainPanel.Controls.Add(btnRandom);
             MainPanel.Controls.Add(label1);
@@ -115,23 +117,38 @@
             // 
             // btnRandom
             // 
+            btnRandom.Anchor = AnchorStyles.None;
+            btnRandom.BackColor = Color.LightGray;
+            btnRandom.FlatStyle = FlatStyle.Popup;
             btnRandom.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnRandom.Location = new Point(416, 565);
             btnRandom.Name = "btnRandom";
             btnRandom.Size = new Size(163, 50);
             btnRandom.TabIndex = 5;
             btnRandom.Text = "START";
-            btnRandom.UseVisualStyleBackColor = true;
+            btnRandom.UseVisualStyleBackColor = false;
             // 
             // btnMove
             // 
+            btnMove.Anchor = AnchorStyles.None;
+            btnMove.BackColor = Color.LightGray;
+            btnMove.FlatStyle = FlatStyle.Popup;
             btnMove.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnMove.Location = new Point(804, 234);
+            btnMove.Location = new Point(765, 234);
             btnMove.Name = "btnMove";
-            btnMove.Size = new Size(98, 34);
+            btnMove.Size = new Size(178, 34);
             btnMove.TabIndex = 6;
             btnMove.Text = "Move ";
-            btnMove.UseVisualStyleBackColor = true;
+            btnMove.UseVisualStyleBackColor = false;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(99, 250);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 7;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
             // 
             // RandomForm
             // 
@@ -162,5 +179,6 @@
         private Label label1;
         private Button btnRandom;
         private Button btnMove;
+        private Button button1;
     }
 }
