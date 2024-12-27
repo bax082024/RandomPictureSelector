@@ -53,6 +53,7 @@
             saveSettiToolStripMenuItem = new ToolStripMenuItem();
             loadSettingsToolStripMenuItem = new ToolStripMenuItem();
             shuffleTimer = new System.Windows.Forms.Timer(components);
+            themesToolStripMenuItem = new ToolStripMenuItem();
             MainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             statusStrip1.SuspendLayout();
@@ -259,7 +260,7 @@
             // menuStrip1
             // 
             menuStrip1.BackColor = Color.LightGray;
-            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, settingsToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, settingsToolStripMenuItem, themesToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(1009, 24);
@@ -307,6 +308,12 @@
             loadSettingsToolStripMenuItem.Size = new Size(180, 22);
             loadSettingsToolStripMenuItem.Text = "Load Settings";
             loadSettingsToolStripMenuItem.Click += loadSettingsToolStripMenuItem_Click;
+            // 
+            // themesToolStripMenuItem
+            // 
+            themesToolStripMenuItem.Name = "themesToolStripMenuItem";
+            themesToolStripMenuItem.Size = new Size(60, 20);
+            themesToolStripMenuItem.Text = "Themes";
             // 
             // RandomForm
             // 
@@ -356,5 +363,6 @@
         private ToolStripMenuItem shuffleSettingsToolStripMenuItem;
         private ToolStripMenuItem saveSettiToolStripMenuItem;
         private ToolStripMenuItem loadSettingsToolStripMenuItem;
+        private ToolStripMenuItem themesToolStripMenuItem;
     }
 }

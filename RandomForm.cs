@@ -25,6 +25,8 @@ namespace RandomPictureSelector
             InitializeComponent();
             shuffleTimer.Tick += shuffleTimer_Tick;
 
+            SaveSettings();
+
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -464,6 +466,11 @@ namespace RandomPictureSelector
         private void loadSettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             LoadSettings();
+        }       
+
+        private void RandomForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            SaveSettings();
         }
     }
 }
