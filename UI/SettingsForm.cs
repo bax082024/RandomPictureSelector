@@ -10,11 +10,35 @@ using System.Windows.Forms;
 
 namespace RandomPictureSelector.UI
 {
+    public int MinShuffleCount
+    {
+        get { return (int)numMinShuffleCount.Value; }
+        set { numMinShuffleCount.Value = value; }
+    }
+
+    public int ShuffleSpeed
+    {
+        get { return (int)numShuffleSpeed.Value; }
+        set { numShuffleSpeed.Value = value; }
+    }
+
     public partial class SettingsForm : Form
     {
         public SettingsForm()
         {
             InitializeComponent();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
+
+        private void btnLoad_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
         }
     }
 }

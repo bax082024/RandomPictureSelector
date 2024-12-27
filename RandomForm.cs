@@ -1,3 +1,5 @@
+using RandomPictureSelector.UI;
+
 namespace RandomPictureSelector
 {
     public partial class RandomForm : Form
@@ -52,7 +54,7 @@ namespace RandomPictureSelector
             shuffleIndex = 0;
             shuffleCount = 0;
 
-            
+
 
             // Dynamically set MaxShuffleCount
             int calculatedShuffleCount = Math.Max(20, imagePaths.Count); // Minimum 20 or the number of images
@@ -72,7 +74,7 @@ namespace RandomPictureSelector
                 shuffleProgressBar.Value = 1; // Start progress bar at 1
             }
 
-            
+
 
             // Start the shuffle timer
             shuffleTimer.Interval = customShuffleSpeed;
@@ -354,8 +356,22 @@ namespace RandomPictureSelector
             }
         }
 
+        private void shuffleSettingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (SettingsForm settingsForm = new SettingsForm())
+            {
+                // Pass current values to the SettingsForm
+                settingsForm.MinShuffleCount = (int)numMinShuffleCount.Value;
+                settingsForm.ShuffleSpeed = (int)numShuffleSpeed.Value;
 
-
-
+                // Show the SettingsForm
+                if (settingsForm.ShowDialog() == DialogResult.OK)
+                {
+                    // Retrieve updated settings
+                    numMinShuffleCount.Value = settingsForm.MinShuffleCount;
+                    numShuffleSpeed.Value = settingsForm.ShuffleSpeed;
+                }
+            }
+        }
     }
 }

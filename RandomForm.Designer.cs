@@ -48,11 +48,11 @@
             menuStrip1 = new MenuStrip();
             fileToolStripMenuItem = new ToolStripMenuItem();
             exitToolStripMenuItem = new ToolStripMenuItem();
-            shuffleTimer = new System.Windows.Forms.Timer(components);
             settingsToolStripMenuItem = new ToolStripMenuItem();
             shuffleSettingsToolStripMenuItem = new ToolStripMenuItem();
             saveSettiToolStripMenuItem = new ToolStripMenuItem();
             loadSettingsToolStripMenuItem = new ToolStripMenuItem();
+            shuffleTimer = new System.Windows.Forms.Timer(components);
             MainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             statusStrip1.SuspendLayout();
@@ -292,6 +292,7 @@
             shuffleSettingsToolStripMenuItem.Name = "shuffleSettingsToolStripMenuItem";
             shuffleSettingsToolStripMenuItem.Size = new Size(180, 22);
             shuffleSettingsToolStripMenuItem.Text = "Shuffle Settings";
+            shuffleSettingsToolStripMenuItem.Click += shuffleSettingsToolStripMenuItem_Click;
             // 
             // saveSettiToolStripMenuItem
             // 
