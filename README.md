@@ -34,7 +34,7 @@ and allows users to manage their image lists with save and load functionality.
    
 2. **Shuffle Images**:
    - Click the `START` button to shuffle images.
-   - The application will display a sequence of images and randomly select the final image.
+   - The application will shuffle trough the images and randomly select the final image.
    
 3. **Move Images**:
    - Use the `Move` button to transfer images from the `Used Images` list back to the `Inserted Images` list.
@@ -45,3 +45,5 @@ and allows users to manage their image lists with save and load functionality.
 
 5. **Change Theme**:
    - Go to the `Themes` menu and select your preferred theme or gradient.
+
+---
