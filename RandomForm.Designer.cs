@@ -72,7 +72,7 @@
             listBox1.Anchor = AnchorStyles.None;
             listBox1.FormattingEnabled = true;
             listBox1.ItemHeight = 15;
-            listBox1.Location = new Point(60, 218);
+            listBox1.Location = new Point(61, 283);
             listBox1.Name = "listBox1";
             listBox1.Size = new Size(178, 259);
             listBox1.TabIndex = 1;
@@ -82,7 +82,7 @@
             listBox2.Anchor = AnchorStyles.None;
             listBox2.FormattingEnabled = true;
             listBox2.ItemHeight = 15;
-            listBox2.Location = new Point(768, 218);
+            listBox2.Location = new Point(765, 283);
             listBox2.Name = "listBox2";
             listBox2.Size = new Size(178, 259);
             listBox2.TabIndex = 2;
@@ -91,7 +91,7 @@
             // 
             pictureBox1.Anchor = AnchorStyles.None;
             pictureBox1.BorderStyle = BorderStyle.Fixed3D;
-            pictureBox1.Location = new Point(303, 77);
+            pictureBox1.Location = new Point(301, 142);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(400, 400);
             pictureBox1.TabIndex = 3;
