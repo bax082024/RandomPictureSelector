@@ -520,6 +520,16 @@ namespace RandomPictureSelector
             menuStrip1.ForeColor = theme == "Dark" ? Color.White : Color.Black;
         }
 
+        private void RandomForm_Paint(object sender, PaintEventArgs e)
+        {
+            var gradientBrush = new System.Drawing.Drawing2D.LinearGradientBrush(
+                this.ClientRectangle,
+                Color.LightBlue,
+                Color.DarkBlue,
+                System.Drawing.Drawing2D.LinearGradientMode.Vertical);
+            e.Graphics.FillRectangle(gradientBrush, this.ClientRectangle);
+        }
+
 
         private void ChangeTheme(string theme)
         {
