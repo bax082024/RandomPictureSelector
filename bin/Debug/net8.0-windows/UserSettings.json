@@ -1,4 +1,5 @@
 {
-  "MinShuffleCount": 1,
-  "ShuffleSpeed": 80
+  "MinShuffleCount": 0,
+  "ShuffleSpeed": 100,
+  "SelectedTheme": "Light"
 }

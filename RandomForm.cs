@@ -28,6 +28,7 @@ namespace RandomPictureSelector
             shuffleTimer.Tick += shuffleTimer_Tick;
 
             SaveSettings();
+            currentTheme = "DesignView";
             ApplyTheme(currentTheme);
 
         }
@@ -467,6 +468,8 @@ namespace RandomPictureSelector
 
         private void ApplyTheme(string theme)
         {
+            this.Paint -= RandomForm_Paint; // Detach any existing Paint event to prevent conflicts
+
             switch (theme)
             {
                 case "Light":
@@ -477,6 +480,7 @@ namespace RandomPictureSelector
                         control.ForeColor = Color.Black;
                     }
                     break;
+
                 case "Dark":
                     this.BackColor = Color.Black;
                     foreach (Control control in this.Controls)
@@ -485,28 +489,37 @@ namespace RandomPictureSelector
                         control.ForeColor = Color.White;
                     }
                     break;
+
                 case "Gradient":
-                    this.Paint += (sender, e) =>
-                    {
-                        var gradientBrush = new System.Drawing.Drawing2D.LinearGradientBrush(
-                            this.ClientRectangle,
-                            Color.LightBlue,
-                            Color.DarkBlue,
-                            System.Drawing.Drawing2D.LinearGradientMode.Vertical);
-                        e.Graphics.FillRectangle(gradientBrush, this.ClientRectangle);
-                    };
+                    this.Paint += RandomForm_Paint; // Attach the Paint event for the gradient background
                     foreach (Control control in this.Controls)
                     {
-                        control.BackColor = Color.Transparent;
+                        control.BackColor = Color.Transparent; // Ensure controls are transparent for gradient
                         control.ForeColor = Color.White;
+                        if (control is Button button)
+                        {
+                            button.BackColor = Color.DimGray;
+                            button.FlatStyle = FlatStyle.Flat; // Optional: Flat style for modern look
+                        }
                     }
                     break;
 
+                case "DesignView":
                 default:
-                    ApplyTheme("Light"); // Fallback to Light theme
+                    this.BackColor = Color.LightYellow;
+                    foreach (Control control in this.Controls)
+                    {
+                        control.BackColor = Color.LightYellow;
+                        control.ForeColor = Color.Black;
+                    }
                     break;
             }
+
+            // Apply theme to menu strip separately
+            menuStrip1.BackColor = theme == "Dark" ? Color.Gray : Color.Beige;
+            menuStrip1.ForeColor = theme == "Dark" ? Color.White : Color.Black;
         }
+
 
         private void ChangeTheme(string theme)
         {
