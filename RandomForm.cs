@@ -460,8 +460,18 @@ namespace RandomPictureSelector
 
         private void ApplyTheme(string theme)
         {
-            switch (theme) 
+            switch (theme)
+            {
+                case "Light":
+                    this.BackColor = Color.White;
+                    foreach (Control control in this.Controls)
+                    {
+                        control.BackColor = Color.White;
+                        control.ForeColor = Color.Black;
+                    }
+                    break;
 
+            }
         }
 
         private void saveSettiToolStripMenuItem_Click(object sender, EventArgs e)
