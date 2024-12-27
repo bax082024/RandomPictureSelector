@@ -39,7 +39,7 @@
             label5 = new Label();
             label6 = new Label();
             btnSave = new Button();
-            button2 = new Button();
+            btnLoad = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numMinShuffleCount).BeginInit();
@@ -60,7 +60,7 @@
             // 
             panel2.Anchor = AnchorStyles.None;
             panel2.BackColor = Color.Gray;
-            panel2.Controls.Add(button2);
+            panel2.Controls.Add(btnLoad);
             panel2.Controls.Add(btnSave);
             panel2.Controls.Add(label6);
             panel2.Controls.Add(label5);
@@ -111,6 +111,7 @@
             // 
             // label2
             // 
+            label2.Anchor = AnchorStyles.None;
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.Location = new Point(210, 101);
@@ -121,6 +122,7 @@
             // 
             // label3
             // 
+            label3.Anchor = AnchorStyles.None;
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.Location = new Point(178, 254);
@@ -131,6 +133,7 @@
             // 
             // label4
             // 
+            label4.Anchor = AnchorStyles.None;
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             label4.Location = new Point(151, 154);
@@ -141,6 +144,7 @@
             // 
             // label5
             // 
+            label5.Anchor = AnchorStyles.None;
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             label5.Location = new Point(143, 203);
@@ -151,6 +155,7 @@
             // 
             // label6
             // 
+            label6.Anchor = AnchorStyles.None;
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label6.Location = new Point(85, 458);
@@ -170,14 +175,16 @@
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnLoad
             // 
-            button2.Location = new Point(210, 338);
-            button2.Name = "button2";
-            button2.Size = new Size(125, 33);
-            button2.TabIndex = 9;
-            button2.Text = "button2";
-            button2.UseVisualStyleBackColor = true;
+            btnLoad.Anchor = AnchorStyles.None;
+            btnLoad.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnLoad.Location = new Point(210, 338);
+            btnLoad.Name = "btnLoad";
+            btnLoad.Size = new Size(125, 33);
+            btnLoad.TabIndex = 9;
+            btnLoad.Text = "Load";
+            btnLoad.UseVisualStyleBackColor = true;
             // 
             // SettingsForm
             // 
@@ -210,7 +217,7 @@
         private Label label4;
         private Label label3;
         private Label label6;
-        private Button button2;
+        private Button btnLoad;
         private Button btnSave;
     }
 }
