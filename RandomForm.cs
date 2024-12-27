@@ -123,6 +123,23 @@ namespace RandomPictureSelector
             return img;
         }
 
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBox1_DragEnter(object sender, DragEventArgs e)
+        {
+            // Check if the data being dragged is a file
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effect = DragDropEffects.Copy; // Allow copying
+            }
+            else
+            {
+                e.Effect = DragDropEffects.None; // Disallow if not files
+            }
+        }
 
     }
 }
