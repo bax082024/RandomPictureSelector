@@ -361,15 +361,15 @@ namespace RandomPictureSelector
             using (SettingsForm settingsForm = new SettingsForm())
             {
                 // Pass current values to the SettingsForm
-                settingsForm.MinShuffleCount = (int)numMinShuffleCount.Value;
-                settingsForm.ShuffleSpeed = (int)numShuffleSpeed.Value;
+                settingsForm.MinShuffleCount = shuffleProgressBar.Minimum;
+                settingsForm.ShuffleSpeed = customShuffleSpeed;
 
                 // Show the SettingsForm
                 if (settingsForm.ShowDialog() == DialogResult.OK)
                 {
                     // Retrieve updated settings
-                    numMinShuffleCount.Value = settingsForm.MinShuffleCount;
-                    numShuffleSpeed.Value = settingsForm.ShuffleSpeed;
+                    shuffleProgressBar.Minimum = settingsForm.MinShuffleCount;
+                    customShuffleSpeed = settingsForm.ShuffleSpeed;
                 }
             }
         }

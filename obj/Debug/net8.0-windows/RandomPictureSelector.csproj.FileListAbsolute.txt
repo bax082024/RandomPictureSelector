@@ -4,6 +4,7 @@ C:\HjemmeKode\C-Sharp\MyProjects\RandomPictureSelector\bin\Debug\net8.0-windows\
 C:\HjemmeKode\C-Sharp\MyProjects\RandomPictureSelector\bin\Debug\net8.0-windows\RandomPictureSelector.dll
 C:\HjemmeKode\C-Sharp\MyProjects\RandomPictureSelector\bin\Debug\net8.0-windows\RandomPictureSelector.pdb
 C:\HjemmeKode\C-Sharp\MyProjects\RandomPictureSelector\obj\Debug\net8.0-windows\RandomPictureSelector.RandomForm.resources
+C:\HjemmeKode\C-Sharp\MyProjects\RandomPictureSelector\obj\Debug\net8.0-windows\RandomPictureSelector.UI.SettingsForm.resources
 C:\HjemmeKode\C-Sharp\MyProjects\RandomPictureSelector\obj\Debug\net8.0-windows\RandomPictureSelector.csproj.GenerateResource.cache
 C:\HjemmeKode\C-Sharp\MyProjects\RandomPictureSelector\obj\Debug\net8.0-windows\RandomPictureSelector.GeneratedMSBuildEditorConfig.editorconfig
 C:\HjemmeKode\C-Sharp\MyProjects\RandomPictureSelector\obj\Debug\net8.0-windows\RandomPictureSelector.AssemblyInfoInputs.cache
@@ -15,4 +16,3 @@ C:\HjemmeKode\C-Sharp\MyProjects\RandomPictureSelector\obj\Debug\net8.0-windows\
 C:\HjemmeKode\C-Sharp\MyProjects\RandomPictureSelector\obj\Debug\net8.0-windows\RandomPictureSelector.pdb
 C:\HjemmeKode\C-Sharp\MyProjects\RandomPictureSelector\obj\Debug\net8.0-windows\RandomPictureSelector.genruntimeconfig.cache
 C:\HjemmeKode\C-Sharp\MyProjects\RandomPictureSelector\obj\Debug\net8.0-windows\ref\RandomPictureSelector.dll
-C:\HjemmeKode\C-Sharp\MyProjects\RandomPictureSelector\obj\Debug\net8.0-windows\RandomPictureSelector.UI.SettingsForm.resources
