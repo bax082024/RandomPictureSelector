@@ -35,6 +35,7 @@
             listBox2 = new ListBox();
             pictureBox1 = new PictureBox();
             label1 = new Label();
+            btnRandom = new Button();
             MainPanel.SuspendLayout();
             statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -43,6 +44,7 @@
             // MainPanel
             // 
             MainPanel.BackColor = Color.Transparent;
+            MainPanel.Controls.Add(btnRandom);
             MainPanel.Controls.Add(label1);
             MainPanel.Controls.Add(pictureBox1);
             MainPanel.Controls.Add(listBox2);
@@ -109,6 +111,16 @@
             label1.TabIndex = 4;
             label1.Text = "Random Picture Chooser";
             // 
+            // btnRandom
+            // 
+            btnRandom.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnRandom.Location = new Point(416, 565);
+            btnRandom.Name = "btnRandom";
+            btnRandom.Size = new Size(163, 50);
+            btnRandom.TabIndex = 5;
+            btnRandom.Text = "START";
+            btnRandom.UseVisualStyleBackColor = true;
+            // 
             // RandomForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -136,5 +148,6 @@
         private ListBox listBox1;
         private PictureBox pictureBox1;
         private Label label1;
+        private Button btnRandom;
     }
 }
