@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             MainPanel = new Panel();
+            btnExit = new Button();
             label2 = new Label();
             btnAdd = new Button();
             btnMove = new Button();
@@ -42,7 +43,6 @@
             menuStrip1 = new MenuStrip();
             fileToolStripMenuItem = new ToolStripMenuItem();
             exitToolStripMenuItem = new ToolStripMenuItem();
-            btnExit = new Button();
             MainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             statusStrip1.SuspendLayout();
@@ -68,6 +68,19 @@
             MainPanel.Name = "MainPanel";
             MainPanel.Size = new Size(1009, 669);
             MainPanel.TabIndex = 0;
+            // 
+            // btnExit
+            // 
+            btnExit.Anchor = AnchorStyles.None;
+            btnExit.BackColor = Color.LightGray;
+            btnExit.FlatStyle = FlatStyle.Popup;
+            btnExit.Location = new Point(868, 592);
+            btnExit.Name = "btnExit";
+            btnExit.Size = new Size(75, 23);
+            btnExit.TabIndex = 10;
+            btnExit.Text = "Exit";
+            btnExit.UseVisualStyleBackColor = false;
+            btnExit.Click += btnExit_Click;
             // 
             // label2
             // 
@@ -137,10 +150,12 @@
             // 
             pictureBox1.Anchor = AnchorStyles.None;
             pictureBox1.BackColor = SystemColors.InactiveCaption;
+            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox1.BorderStyle = BorderStyle.Fixed3D;
             pictureBox1.Location = new Point(301, 142);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(400, 400);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 3;
             pictureBox1.TabStop = false;
             // 
@@ -199,22 +214,9 @@
             // exitToolStripMenuItem
             // 
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            exitToolStripMenuItem.Size = new Size(180, 22);
+            exitToolStripMenuItem.Size = new Size(93, 22);
             exitToolStripMenuItem.Text = "Exit";
             exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
-            // 
-            // btnExit
-            // 
-            btnExit.Anchor = AnchorStyles.None;
-            btnExit.BackColor = Color.LightGray;
-            btnExit.FlatStyle = FlatStyle.Popup;
-            btnExit.Location = new Point(868, 592);
-            btnExit.Name = "btnExit";
-            btnExit.Size = new Size(75, 23);
-            btnExit.TabIndex = 10;
-            btnExit.Text = "Exit";
-            btnExit.UseVisualStyleBackColor = false;
-            btnExit.Click += btnExit_Click;
             // 
             // RandomForm
             // 

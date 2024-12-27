@@ -45,6 +45,10 @@ namespace RandomPictureSelector
             int randomIndex = random.Next(imagePaths.Count);
             string selectedImage = imagePaths[randomIndex];
 
+            // Correct the image orientation
+            Image imageToDisplay = FixImageOrientation(Image.FromFile(selectedImage));
+            pictureBox1.Image = imageToDisplay;
+
             pictureBox1.Image = Image.FromFile(selectedImage);
 
             usedImagePaths.Add(selectedImage);
@@ -81,5 +85,38 @@ namespace RandomPictureSelector
         {
             Application.Exit();
         }
+
+        private Image FixImageOrientation(Image img)
+        {
+            const int ExifOrientationId = 0x112; // EXIF tag for Orientation
+
+            if (img.PropertyIdList.Contains(ExifOrientationId))
+            {
+                var prop = img.GetPropertyItem(ExifOrientationId);
+                int orientation = BitConverter.ToUInt16(prop.Value, 0);
+                RotateFlipType rotateFlip = RotateFlipType.RotateNoneFlipNone;
+
+                switch (orientation)
+                {
+                    case 3:
+                        rotateFlip = RotateFlipType.Rotate180FlipNone;
+                        break;
+                    case 6:
+                        rotateFlip = RotateFlipType.Rotate90FlipNone;
+                        break;
+                    case 8:
+                        rotateFlip = RotateFlipType.Rotate270FlipNone;
+                        break;
+                }
+
+                if (rotateFlip != RotateFlipType.RotateNoneFlipNone)
+                {
+                    img.RotateFlip(rotateFlip);
+                }
+            }
+
+            return img;
+        }
+
     }
 }
