@@ -456,8 +456,14 @@ namespace RandomPictureSelector
             }
         }
 
+        private void saveSettiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveSettings();
+        }
 
-
-
+        private void loadSettingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadSettings();
+        }
     }
 }

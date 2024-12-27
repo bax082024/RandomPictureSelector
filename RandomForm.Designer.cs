@@ -299,12 +299,14 @@
             saveSettiToolStripMenuItem.Name = "saveSettiToolStripMenuItem";
             saveSettiToolStripMenuItem.Size = new Size(180, 22);
             saveSettiToolStripMenuItem.Text = "Save Settings";
+            saveSettiToolStripMenuItem.Click += saveSettiToolStripMenuItem_Click;
             // 
             // loadSettingsToolStripMenuItem
             // 
             loadSettingsToolStripMenuItem.Name = "loadSettingsToolStripMenuItem";
             loadSettingsToolStripMenuItem.Size = new Size(180, 22);
             loadSettingsToolStripMenuItem.Text = "Load Settings";
+            loadSettingsToolStripMenuItem.Click += loadSettingsToolStripMenuItem_Click;
             // 
             // RandomForm
             // 
