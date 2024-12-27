@@ -10,20 +10,22 @@ using System.Windows.Forms;
 
 namespace RandomPictureSelector.UI
 {
-    public int MinShuffleCount
-    {
-        get { return (int)numMinShuffleCount.Value; }
-        set { numMinShuffleCount.Value = value; }
-    }
-
-    public int ShuffleSpeed
-    {
-        get { return (int)numShuffleSpeed.Value; }
-        set { numShuffleSpeed.Value = value; }
-    }
+    
 
     public partial class SettingsForm : Form
     {
+        public int MinShuffleCount
+        {
+            get { return (int)numMinShuffleCount.Value; }
+            set { numMinShuffleCount.Value = value; }
+        }
+
+        public int ShuffleSpeed
+        {
+            get { return (int)numShuffleSpeed.Value; }
+            set { numShuffleSpeed.Value = value; }
+        }
+
         public SettingsForm()
         {
             InitializeComponent();
