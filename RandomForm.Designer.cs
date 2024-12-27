@@ -57,6 +57,7 @@
             darkToolStripMenuItem = new ToolStripMenuItem();
             gradientToolStripMenuItem = new ToolStripMenuItem();
             shuffleTimer = new System.Windows.Forms.Timer(components);
+            defaultToolStripMenuItem = new ToolStripMenuItem();
             MainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             statusStrip1.SuspendLayout();
@@ -108,7 +109,7 @@
             // btnLoad
             // 
             btnLoad.Anchor = AnchorStyles.None;
-            btnLoad.BackColor = Color.LightGray;
+            btnLoad.BackColor = Color.DarkGray;
             btnLoad.FlatStyle = FlatStyle.Popup;
             btnLoad.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnLoad.Location = new Point(154, 548);
@@ -122,7 +123,7 @@
             // btnSave
             // 
             btnSave.Anchor = AnchorStyles.None;
-            btnSave.BackColor = Color.LightGray;
+            btnSave.BackColor = Color.DarkGray;
             btnSave.FlatStyle = FlatStyle.Popup;
             btnSave.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSave.Location = new Point(61, 548);
@@ -136,7 +137,7 @@
             // btnExit
             // 
             btnExit.Anchor = AnchorStyles.None;
-            btnExit.BackColor = Color.LightGray;
+            btnExit.BackColor = Color.DarkGray;
             btnExit.FlatStyle = FlatStyle.Popup;
             btnExit.Location = new Point(868, 592);
             btnExit.Name = "btnExit";
@@ -160,7 +161,7 @@
             // btnAdd
             // 
             btnAdd.Anchor = AnchorStyles.None;
-            btnAdd.BackColor = Color.LightGray;
+            btnAdd.BackColor = Color.DarkGray;
             btnAdd.FlatStyle = FlatStyle.Popup;
             btnAdd.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAdd.Location = new Point(61, 236);
@@ -174,7 +175,7 @@
             // btnMove
             // 
             btnMove.Anchor = AnchorStyles.None;
-            btnMove.BackColor = Color.LightGray;
+            btnMove.BackColor = Color.DarkGray;
             btnMove.FlatStyle = FlatStyle.Popup;
             btnMove.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnMove.Location = new Point(765, 234);
@@ -189,7 +190,7 @@
             // btnRandom
             // 
             btnRandom.Anchor = AnchorStyles.None;
-            btnRandom.BackColor = Color.LightGray;
+            btnRandom.BackColor = Color.DarkGray;
             btnRandom.FlatStyle = FlatStyle.Popup;
             btnRandom.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnRandom.Location = new Point(413, 592);
@@ -214,7 +215,7 @@
             // pictureBox1
             // 
             pictureBox1.Anchor = AnchorStyles.None;
-            pictureBox1.BackColor = SystemColors.Info;
+            pictureBox1.BackColor = SystemColors.InactiveCaption;
             pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox1.BorderStyle = BorderStyle.Fixed3D;
             pictureBox1.Location = new Point(315, 167);
@@ -227,6 +228,7 @@
             // listBox2
             // 
             listBox2.Anchor = AnchorStyles.None;
+            listBox2.BackColor = Color.LemonChiffon;
             listBox2.FormattingEnabled = true;
             listBox2.ItemHeight = 15;
             listBox2.Location = new Point(765, 283);
@@ -238,6 +240,7 @@
             // 
             listBox1.AllowDrop = true;
             listBox1.Anchor = AnchorStyles.None;
+            listBox1.BackColor = Color.LemonChiffon;
             listBox1.FormattingEnabled = true;
             listBox1.ItemHeight = 15;
             listBox1.Location = new Point(61, 283);
@@ -315,7 +318,7 @@
             // 
             // themesToolStripMenuItem
             // 
-            themesToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { lightToolStripMenuItem, darkToolStripMenuItem, gradientToolStripMenuItem });
+            themesToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { lightToolStripMenuItem, darkToolStripMenuItem, gradientToolStripMenuItem, defaultToolStripMenuItem });
             themesToolStripMenuItem.Name = "themesToolStripMenuItem";
             themesToolStripMenuItem.Size = new Size(60, 20);
             themesToolStripMenuItem.Text = "Themes";
@@ -323,23 +326,30 @@
             // lightToolStripMenuItem
             // 
             lightToolStripMenuItem.Name = "lightToolStripMenuItem";
-            lightToolStripMenuItem.Size = new Size(119, 22);
+            lightToolStripMenuItem.Size = new Size(180, 22);
             lightToolStripMenuItem.Text = "Light";
             lightToolStripMenuItem.Click += lightToolStripMenuItem_Click;
             // 
             // darkToolStripMenuItem
             // 
             darkToolStripMenuItem.Name = "darkToolStripMenuItem";
-            darkToolStripMenuItem.Size = new Size(119, 22);
+            darkToolStripMenuItem.Size = new Size(180, 22);
             darkToolStripMenuItem.Text = "Dark";
             darkToolStripMenuItem.Click += darkToolStripMenuItem_Click;
             // 
             // gradientToolStripMenuItem
             // 
             gradientToolStripMenuItem.Name = "gradientToolStripMenuItem";
-            gradientToolStripMenuItem.Size = new Size(119, 22);
+            gradientToolStripMenuItem.Size = new Size(180, 22);
             gradientToolStripMenuItem.Text = "Gradient";
             gradientToolStripMenuItem.Click += gradientToolStripMenuItem_Click;
+            // 
+            // defaultToolStripMenuItem
+            // 
+            defaultToolStripMenuItem.Name = "defaultToolStripMenuItem";
+            defaultToolStripMenuItem.Size = new Size(180, 22);
+            defaultToolStripMenuItem.Text = "Default";
+            defaultToolStripMenuItem.Click += defaultToolStripMenuItem_Click;
             // 
             // RandomForm
             // 
@@ -393,5 +403,6 @@
         private ToolStripMenuItem lightToolStripMenuItem;
         private ToolStripMenuItem darkToolStripMenuItem;
         private ToolStripMenuItem gradientToolStripMenuItem;
+        private ToolStripMenuItem defaultToolStripMenuItem;
     }
 }
