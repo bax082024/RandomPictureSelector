@@ -202,22 +202,57 @@ namespace RandomPictureSelector
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
                 openFileDialog.Filter = "Text Files|*.txt";
-                openFileDialog.Title = "Load Image List";
+                openFileDialog.Title = "Load Image Lists";
 
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    string[] loadedPaths = System.IO.File.ReadAllLines(openFileDialog.FileName);
+                    imagePaths.Clear();
+                    usedImagePaths.Clear();
+                    listBox1.Items.Clear();
+                    listBox2.Items.Clear();
 
-                    foreach (string path in loadedPaths)
+                    using (StreamReader reader = new StreamReader(openFileDialog.FileName))
                     {
-                        if (!imagePaths.Contains(path) && System.IO.File.Exists(path))
+                        string line;
+                        bool loadingInsertImages = false;
+                        bool loadingUsedImages = false;
+
+                        while ((line = reader.ReadLine()) != null)
                         {
-                            imagePaths.Add(path);
-                            listBox1.Items.Add(System.IO.Path.GetFileName(path));
+                            if (line == "[Insert Images]")
+                            {
+                                loadingInsertImages = true;
+                                loadingUsedImages = false;
+                                continue;
+                            }
+
+                            if (line == "[Used Images]")
+                            {
+                                loadingInsertImages = false;
+                                loadingUsedImages = true;
+                                continue;
+                            }
+
+                            if (loadingInsertImages)
+                            {
+                                if (System.IO.File.Exists(line))
+                                {
+                                    imagePaths.Add(line);
+                                    listBox1.Items.Add(System.IO.Path.GetFileName(line));
+                                }
+                            }
+                            else if (loadingUsedImages)
+                            {
+                                if (System.IO.File.Exists(line))
+                                {
+                                    usedImagePaths.Add(line);
+                                    listBox2.Items.Add(System.IO.Path.GetFileName(line));
+                                }
+                            }
                         }
                     }
 
-                    MessageBox.Show("Image list loaded successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Image lists loaded successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
