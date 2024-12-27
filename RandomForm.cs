@@ -171,12 +171,28 @@ namespace RandomPictureSelector
             using (SaveFileDialog saveFileDialog = new SaveFileDialog())
             {
                 saveFileDialog.Filter = "Text Files|*.txt";
-                saveFileDialog.Title = "Save Image List";
+                saveFileDialog.Title = "Save Image Lists";
 
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    System.IO.File.WriteAllLines(saveFileDialog.FileName, imagePaths);
-                    MessageBox.Show("Image list saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    using (StreamWriter writer = new StreamWriter(saveFileDialog.FileName))
+                    {
+                        // Save listBox1 (Insert Images)
+                        writer.WriteLine("[Insert Images]");
+                        foreach (string path in imagePaths)
+                        {
+                            writer.WriteLine(path);
+                        }
+
+                        // Save listBox2 (Used Images)
+                        writer.WriteLine("[Used Images]");
+                        foreach (string path in usedImagePaths)
+                        {
+                            writer.WriteLine(path);
+                        }
+                    }
+
+                    MessageBox.Show("Image lists saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
