@@ -42,15 +42,15 @@ namespace RandomPictureSelector
                 return;
             }
 
+            // Select a random image
             int randomIndex = random.Next(imagePaths.Count);
             string selectedImage = imagePaths[randomIndex];
 
-            // Correct the image orientation
+            // Load the image and fix its orientation
             Image imageToDisplay = FixImageOrientation(Image.FromFile(selectedImage));
             pictureBox1.Image = imageToDisplay;
 
-            pictureBox1.Image = Image.FromFile(selectedImage);
-
+            // Move the selected image to "Used Images"
             usedImagePaths.Add(selectedImage);
             listBox2.Items.Add(System.IO.Path.GetFileName(selectedImage));
 
@@ -90,33 +90,39 @@ namespace RandomPictureSelector
         {
             const int ExifOrientationId = 0x112; // EXIF tag for Orientation
 
-            if (img.PropertyIdList.Contains(ExifOrientationId))
+            try
             {
-                var prop = img.GetPropertyItem(ExifOrientationId);
-                int orientation = BitConverter.ToUInt16(prop.Value, 0);
-                RotateFlipType rotateFlip = RotateFlipType.RotateNoneFlipNone;
-
-                switch (orientation)
+                if (img.PropertyIdList.Contains(ExifOrientationId))
                 {
-                    case 3:
-                        rotateFlip = RotateFlipType.Rotate180FlipNone;
-                        break;
-                    case 6:
-                        rotateFlip = RotateFlipType.Rotate90FlipNone;
-                        break;
-                    case 8:
-                        rotateFlip = RotateFlipType.Rotate270FlipNone;
-                        break;
-                }
+                    var prop = img.GetPropertyItem(ExifOrientationId);
+                    int orientation = BitConverter.ToUInt16(prop.Value, 0);
 
-                if (rotateFlip != RotateFlipType.RotateNoneFlipNone)
-                {
-                    img.RotateFlip(rotateFlip);
+                    // Apply necessary rotation based on orientation value
+                    switch (orientation)
+                    {
+                        case 3: // 180 degrees
+                            img.RotateFlip(RotateFlipType.Rotate180FlipNone);
+                            break;
+                        case 6: // 90 degrees clockwise
+                            img.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                            break;
+                        case 8: // 90 degrees counterclockwise
+                            img.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                            break;
+                    }
+
+                    // Remove the EXIF orientation tag to prevent reapplying rotation
+                    img.RemovePropertyItem(ExifOrientationId);
                 }
+            }
+            catch
+            {
+                // If something goes wrong, we just return the image as is.
             }
 
             return img;
         }
+
 
     }
 }
