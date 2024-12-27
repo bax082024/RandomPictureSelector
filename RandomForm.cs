@@ -277,5 +277,23 @@ namespace RandomPictureSelector
             }
         }
 
+        private void SelectFinalRandomImage()
+        {
+            // Select a random image
+            int randomIndex = random.Next(imagePaths.Count);
+            string selectedImage = imagePaths[randomIndex];
+
+            // Display the selected image in the PictureBox
+            pictureBox1.Image = Image.FromFile(selectedImage);
+
+            // Move the selected image to "Used Images"
+            usedImagePaths.Add(selectedImage);
+            listBox2.Items.Add(System.IO.Path.GetFileName(selectedImage));
+
+            imagePaths.RemoveAt(randomIndex);
+            listBox1.Items.RemoveAt(randomIndex);
+        }
+
+
     }
 }
