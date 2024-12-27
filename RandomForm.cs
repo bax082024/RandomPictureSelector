@@ -470,6 +470,14 @@ namespace RandomPictureSelector
                         control.ForeColor = Color.Black;
                     }
                     break;
+                case "Dark":
+                    this.BackColor = Color.Black;
+                    foreach (Control control in this.Controls)
+                    {
+                        control.BackColor = Color.Black;
+                        control.ForeColor = Color.White;
+                    }
+                    break;
 
             }
         }
