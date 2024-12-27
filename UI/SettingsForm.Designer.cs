@@ -50,16 +50,21 @@
             // numMinShuffleCount
             // 
             numMinShuffleCount.Location = new Point(308, 133);
+            numMinShuffleCount.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             numMinShuffleCount.Name = "numMinShuffleCount";
             numMinShuffleCount.Size = new Size(120, 23);
             numMinShuffleCount.TabIndex = 0;
+            numMinShuffleCount.Value = new decimal(new int[] { 20, 0, 0, 0 });
             // 
             // numShuffleSpeed
             // 
             numShuffleSpeed.Location = new Point(308, 182);
+            numShuffleSpeed.Maximum = new decimal(new int[] { 500, 0, 0, 0 });
+            numShuffleSpeed.Minimum = new decimal(new int[] { 10, 0, 0, 0 });
             numShuffleSpeed.Name = "numShuffleSpeed";
             numShuffleSpeed.Size = new Size(120, 23);
             numShuffleSpeed.TabIndex = 1;
+            numShuffleSpeed.Value = new decimal(new int[] { 100, 0, 0, 0 });
             // 
             // SettingsForm
             // 
